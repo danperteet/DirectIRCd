@@ -1,0 +1,372 @@
+serverinfo
+{
+	name = "rizon.server";
+	sid = "_CHANGE_ME_";
+	description = "Rizon IRC Network - Client Server";
+	network_name = "Rizon";
+	network_desc = "Where are you?";
+	hub = no;
+#       vhost = "192.169.0.1";
+#       vhost6 = "3ffe:80e8:546::2";
+	max_clients = 1024;
+#       rsa_private_key_file = "/usr/local/ircd/etc/rsa.key";
+#       ssl_certificate_file = "/usr/local/ircd/etc/cert.pem";
+};
+
+admin
+{
+	name = "Rizon Admin";
+	description = "Main Server Administrator";
+	email = "<irc-admin@rizon.server>";
+};
+
+logging
+{
+	use_logging = yes;
+	fuserlog = "logs/userlog";
+	foperlog = "logs/operlog";
+	ffailed_operlog = "logs/foperlog";
+	log_level = L_INFO;
+};
+
+class
+{
+	name = "users";
+	ping_time = 2 minutes;
+	number_per_ip = 3;
+	max_local = 3;
+	max_global = 10;
+	max_number = 5000;
+	cidr_bitlen_ipv4 = 24;
+	cidr_bitlen_ipv6 = 120;
+	number_per_cidr = 16;
+	sendq = 1 megabyte;
+};
+
+class
+{
+	name = "opers";
+	ping_time = 2 minutes;
+	number_per_ip = 10;
+	max_number = 100;
+	sendq = 2 megabytes;
+};
+
+class
+{
+	name = "server";
+	ping_time = 2 minutes;
+	ping_warning = 5 seconds;
+	connectfreq = 15 minutes;
+	max_number = 1;
+	sendq = 30 megabytes;
+};
+
+listen
+{
+	host = "1.2.3.4";
+	port = 6660. .6669, 7000;
+	flags = ssl;
+	port = 6697, 9999;
+	flags = hidden;
+	port = 27999;
+};
+
+auth
+{
+	user = "*@172.16.0.0/12";
+	user = "*test@123D:B567:*";
+	password = "letmein";
+	encrypted = yes;
+	spoof = "I.still.hate.packets";
+	class = "opers";
+	/*
+	 * need_password: don't allow users who haven't supplied the correct
+	 *                password to connect using another auth{} block
+	 *                ('&' prefix on /stats I if disabled)
+	 * need_ident:    require the user to have identd to connect ('+' prefix on /stats I)
+	 * spoof_notice:  enable spoofing notification to admins
+	 * exceed_limit:  allow a user to exceed class limits ('>' prefix on /stats I)
+	 * kline_exempt:  exempt this user from k/glines ('^' prefix on /stats I)
+	 * gline_exempt:  exempt this user from glines ('_' prefix on /stats I)
+	 * resv_exempt:   exempt this user from resvs ('$' prefix on /stats I)
+	 * no_tilde:      remove ~ from a user with no ident ('-' prefix on /stats I)
+	 * can_flood:     allow this user to exceed flood limits ('|' prefix on /stats I)
+	 * can_idle:      exempt this user from idle restrictions ('<' prefix on /stats I)
+	 * webirc:        cgi:irc authentication auth block ('?' prefix on /stats I)
+	 */
+	flags = need_password, spoof_notice, exceed_limit, kline_exempt,
+		gline_exempt, resv_exempt, no_tilde, can_flood, can_idle;
+};
+
+/* CGI IRC AUTHENTICATION */
+auth
+{
+	user = "*@172.16.1.1/32";
+	password = "letmein";
+	encrypted = yes;
+	class = "users";
+	flags = need_password, webirc;
+};
+
+auth
+{
+	user = "*@*";
+	class = "users";
+};
+
+auth
+{
+	redirserv = "irc.rizon.net";
+	redirport = 6667;
+	user = "*";
+	class = "users";
+};
+
+operator
+{
+	name = "god";
+	user = "*god@*";
+	user = "*@127.0.0.1";
+	password = "etcnjl8juSU1E";
+	encrypted = yes;
+#	rsa_public_key_file = "/usr/local/ircd/etc/oper.pub";
+	class = "opers";
+	/*
+	 * umodes: default usermodes opers get when they /oper.  If defined,
+	 * it will override oper_umodes settings in general {}.
+	 * Available usermodes:
+	 *
+	 * +b - bots         - See bot and drone flooding notices
+	 * +c - cconn        - Client connection/quit notices
+	 * +C - cconn_full   - Client connection/quit notices full
+	 * +D - deaf         - Don't receive channel messages
+	 * +d - debug        - See debugging notices
+	 * +f - full         - See I: line full notices
+	 * +G - softcallerid - Server Side Ignore for users not on your channels
+	 * +g - callerid     - Server Side Ignore (for privmsgs etc)
+	 * +i - invisible    - Not shown in NAMES or WHO unless you share a
+	 *                     a channel
+	 * +k - skill        - See server generated KILL messages
+	 * +l - locops       - See LOCOPS messages
+	 * +n - nchange      - See client nick changes
+	 * +p - hidechannels - Hide output of channels user is on in WHOIS
+	 * +j - rej          - See rejected client notices
+	 * +s - servnotice   - See general server notices
+	 * +u - unauth       - See unauthorized client notices
+	 * +w - wallop       - See server generated WALLOPS
+	 * +X - external     - See remote server connection and split notices
+	 * +y - spy          - See LINKS, STATS, TRACE notices etc.
+	 * +z - operwall     - See oper generated WALLOPS
+	 */
+#	umodes = locops, servnotice, operwall, wallop;
+
+	/*
+	 * privileges: controls the activities and commands an oper is 
+	 * allowed to do on the server.  All options default to no.
+	 * Available options:
+	 *
+	 * global_kill:  allows remote users to be /KILL'd (OLD 'O' flag)
+	 * remote:       allows remote SQUIT and CONNECT   (OLD 'R' flag)
+	 * remoteban:    allows remote KLINE/UNKLINE
+	 * kline:        allows KILL, KLINE and DLINE      (OLD 'K' flag)
+	 * unkline:      allows UNKLINE and UNDLINE        (OLD 'U' flag)
+	 * gline:        allows GLINE                      (OLD 'G' flag)
+	 * xline:        allows XLINE                      (OLD 'X' flag)
+	 * operwall:     allows OPERWALL
+	 * nick_changes: allows oper to see nickchanges    (OLD 'N' flag)
+	 *               via usermode +n
+	 * rehash:       allows oper to REHASH config      (OLD 'H' flag)
+	 * die:          allows DIE and RESTART            (OLD 'D' flag)
+	 * admin:        gives admin privileges.  admins
+	 *               may (un)load modules and see the
+	 *               real IPs of servers.
+	 * hidden_admin: same as 'admin', but noone can recognize you as
+	 *               being an admin
+	 * hidden_oper:  not shown in /stats p (except for other operators)
+	 * oper_spy:     currently not used
+	 */
+	flags = global_kill, remote, kline, unkline, xline,
+		die, rehash, nick_changes, admin, operwall;
+};
+
+connect
+{
+	name = "my.hub";
+	host = "192.168.0.1";
+	send_password = "password";
+	accept_password = "anotherpassword";
+	encrypted = no;
+	port = 27999;
+	hub_mask = "*";
+#	leaf_mask = "*.uk";
+#	fakename = "*.arpa";
+	class = "server";
+	flags = autoconn, compressed, cryptlink, burst_away, topicburst;
+#	rsa_public_key_file = "etc/remote.server.keyfile";
+#	cipher_preference = "BF/168";
+};
+
+shared
+{
+	name = "services.rizon.net";
+	type = all, services;
+};
+
+shared
+{
+	name = "a.c.i.d.i.c.t.i.v.e";
+	type = all, services;
+};
+
+shared
+{
+	name = "im.not.real";
+	type = all, services;
+};
+
+resv
+{
+	reason = "Reserved for services/staff";
+	nick = "nickserv";
+	nick = "chanserv";
+	nick = "operserv";
+	nick = "memoserv";
+	nick = "botserv";
+	nick = "hostserv";
+	nick = "Global";
+	nick = "Rizon";
+	nick = "JUPES";
+	nick = "JUPE";
+	nick = "CH?NF?X";
+	nick = "oper";
+	nick = "ircop";
+	nick = "op";
+	nick = "ident";
+	nick = "pass";
+};
+
+gecos
+{
+	name = "sub7server";
+	reason = "Trojan drone";
+};
+
+gecos
+{
+	name = "*http*";
+	reason = "Spambot";
+};
+
+channel
+{
+	regex_bans = no;
+	cycle_on_hostchange = yes;
+	disable_fake_channels = yes;
+	restrict_channels = no;
+	disable_local_channels = yes;
+	use_invex = yes;
+	use_except = yes;
+	use_knock = yes;
+	knock_delay = 1 minutes;
+	knock_delay_channel = 1 minute;
+	burst_topicwho = yes;
+	max_chans_per_user = 25;
+	quiet_on_ban = yes;
+	max_bans = 100;
+	join_flood_count = 16;
+	join_flood_time = 8 seconds;
+	default_split_user_count = 20000;
+	default_split_server_count = 15;
+	no_create_on_split = yes;
+	no_join_on_split = no;
+};
+
+serverhide
+{
+	flatten_links = yes;
+	links_delay = 5 minutes;
+	hidden = no;
+	disable_hidden = no;
+	hide_servers = yes;
+	hidden_name = "*.rizon.net";
+	hide_server_ips = yes;
+};
+
+general
+{
+	cloak_key1 = "ChangeMe";
+	cloak_key2 = "ChangeMe";
+	cloak_key3 = "ChangeMe";
+	services_name = "services.rizon.net";
+	gline_min_cidr = 16;
+	gline_min_cidr6 = 48;
+	invisible_on_connect = yes;
+	burst_away = no;
+	use_whois_actually = yes;
+	kill_chase_time_limit = 90;
+	hide_spoof_ips = yes;
+	hide_killer = no;
+	ignore_bogus_ts = no;
+	disable_auth = no;
+	disable_remote_commands = yes;
+	tkline_expire_notices = no;
+	default_floodcount = 10;
+	failed_oper_notice = yes;
+	dots_in_ident = 0;
+	dot_in_ip6_addr = no;
+	min_nonwildcard = 3;
+	min_nonwildcard_simple = 3;
+	max_accept = 20;
+	anti_nick_flood = yes;
+	max_nick_time = 20 seconds;
+	max_nick_changes = 5;
+	anti_spam_exit_message_time = 5 minutes;
+	anti_spam_connect_numeric = yes;
+	ts_warn_delta = 30 seconds;
+	ts_max_delta = 5 minutes;
+	kline_with_reason = yes;
+	kline_reason = "Connection closed";
+	reject_hold_time = 30 seconds;
+	warn_no_nline = yes;
+	stats_o_oper_only = yes;
+	stats_P_oper_only = yes;
+	stats_i_oper_only = yes;
+	stats_k_oper_only = yes;
+	caller_id_wait = 1 minute;
+	opers_bypass_callerid = no;
+	pace_wait_simple = 1 second;
+	pace_wait = 10 seconds;
+	short_motd = no;
+	ping_cookie = no;
+	no_oper_flood = yes;
+	true_no_oper_flood = yes;
+	oper_pass_resv = yes;
+	idletime = 0;
+	max_targets = 4;
+	client_flood = 2560 bytes;
+	message_locale = "standard";
+	oper_only_umodes = bots, cconn, cconn_full, debug, full, skill,
+		nchange, rej, spy, external, operwall, locops, unauth, hidechannels;
+	oper_umodes = bots, locops, servnotice, operwall, wallop, external;
+#       servlink_path = "/usr/local/ircd/bin/servlink";
+#       default_cipher_preference = "BF/168";
+#	use_egd = yes;
+#	egdpool_path = "/var/run/egd-pool";
+#	compression_level = 6;
+	throttle_time = 0;
+};
+
+glines
+{
+	enable = yes;
+	duration = 1 day;
+	logging = reject, block;
+};
+
+modules
+{
+	path = "modules";
+	path = "modules/autoload";
+#       module = "some_module.so";
+};

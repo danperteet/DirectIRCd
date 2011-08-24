@@ -1,0 +1,19 @@
+WHOIS [remoteserver|nick] nick
+
+WHOIS will display detailed user information for
+the specified nick.  If the first parameter is
+specified, WHOIS will display information from
+the specified server, or the server that the
+user is on.  This is how to remotely see
+idle time and away status.
+
+Auth Flags:
+$ - Exempt from resvs.
+= - Spoofed IP.
+^ - Exempt from K/D/G lines.
+_ - Exempt from G lines.
+> - Exempt from user limits.
+< - Exempt from idle limits.
+| - Exempt from flood limits.
+~ - Exempt from dnsbl checks.
+

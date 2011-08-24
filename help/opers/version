@@ -1,0 +1,5 @@
+# $Id: version 129 2005-12-10 00:07:02Z jon $
+VERSION [servername]
+
+VERSION will display the server version of the specified
+server, or the local server if there was no parameter.

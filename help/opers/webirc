@@ -1,0 +1,14 @@
+WEBIRC <cgi password> <username> <client real hostname> <client real IP address>
+
+This command must be send before NICK and USER commands.
+First parameter is used to validate CGI proxy and must
+match password from corresponding auth block. Username
+parameter is not used but its format is validated. 
+Hostname and IP must be user real ones, their format 
+is also validated.
+
+If successful CGI proxy hostname and ip are changed to 
+ones provided in WEBIRC command and user then connects
+to IRC Server as normal. Additionally +W usermode is
+set to such user.
+

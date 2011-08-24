@@ -1,0 +1,13 @@
+# $Id: sapart 129 2005-12-10 00:07:02Z jon $
+SAPART <nick> <channel>,<channel2>,...
+
+The SAPART command requires only two arguments.
+This allows operators to part any user from any server out of
+any channel.
+
+Examples:
+SAPART jon #secretchan - Will part user with nick jon from #secretchan.
+SAPART jon &secretchan - Will part user with nick jon from local channel #secretchan. 
+
+This also works on local channels as well. If used on remote client then user will be 
+forced to part local channel on their server.

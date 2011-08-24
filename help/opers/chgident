@@ -1,0 +1,10 @@
+# $Id: chgident 129 2005-12-10 00:07:02Z jon $
+CHGIDENT <nick> <ident>
+
+The CHGIDENT command requires only two arguments. 
+This command allows irc operators to change ident
+of other users.
+
+Examples:
+CHGIDENT jon leetjon
+

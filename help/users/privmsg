@@ -1,0 +1,21 @@
+PRIVMSG <nick|channel> :message
+
+PRIVMSG will send a standard message to the
+user or channel specified.
+
+PRIVMSG supports the following prefixes for sending
+messages to specific clients in a channel:
+
+~ - channel owners only
+& - channel owners and protected users
+@ - channel owners, protected users, and operators
+% - channel owners, protected users, operators, and half-ops
++ - owners, protected users, operators, half-ops, and voiced users
+
+The nick can be extended to fit into the following
+syntax:
+
+username@servername
+
+This syntax is used to securely send a message to a
+service or a bot.

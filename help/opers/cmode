@@ -1,0 +1,131 @@
+# $Id: cmode 311 2006-02-22 20:41:18Z jon $
+MODE <channel> <+|-><modes> [parameters]
+
+=-=-=-=-=-=-=-=-=-=-=
+    CHANNELMODES
+=-=-=-=-=-=-=-=-=-=-=
+
+    MODE    - DESCRIPTION
+------------------------------------------------------------------------
+
+NO PARAMETERS:
+--------------
+
+     +c     - 'No Control Codes'. This will prevent any user who isn't
+              a owner, protected, opped, half-opped or voiced
+              (+q/+a/+o/+h/+v) from sending messages to the channel
+              containing control codes with the exception of CTCP and
+              ISO-2022.
+
+     +n     - 'No external messages'. This will prevent any user who
+              isn't in the channel from sending messages to the channel.
+
+     +t     - 'Ops Topic'. This will prevent any user who isn't opped,
+              or half-opped (+o/+h) from setting a channel topic.
+
+     +s     - 'Secret'. This will prevent the channel from being shown
+              in a /whois, and in the channel list.
+
+     +p     - 'Paranoia'. This will prevent halfops from setting +h/-h 
+              and kicking other halfops, prevent knocks if the channel 
+              is locked (+i/k/l), and show invite notices when a user 
+              is invited if +i is set.
+
+     +m     - 'Moderated'. This will prevent any user who isn't a owner,
+              protected, opped, half-opped or voiced (+q/+a/+o/+h/+v)
+              from talking in the channel.
+
+     +i     - 'Invite only'. This will prevent anyone from joining your
+              channel who hasn't received an /invite or whose host isn't in
+              the +I list.
+
+     +z     - 'Persist'. This will prevent the channel from being 
+              destroyed when last user leaves. Only Services may
+              set this mode.
+
+     +B     - 'Bandwith Saver'. This will prevent anyone set away, or idle
+              for longer than 30 minutes from receiving channel messages.
+
+     +M     - 'ModReg'. This will prevent any user who isn't a owner,
+              protected, opped, half-opped or voiced (+q/+a/+o/+h/+v) from
+              talking in the channel if they havent identified to their
+              nickname.
+
+     +N     - 'No Notices'. This will prevent any user who isn't a owner,
+              protected, opped, half-opped or voiced (+q/+a/+o/+h/+v)
+              from sending channel notices.
+
+     +O     - 'Oper Only'. This will prevent anyone from joining your
+              channel who is not an IRC Operator. Only IRC Operators may
+              set this mode.
+
+     +R     - 'Registered Only'. This will prevent anyone from joining 
+              your channel if they have not identified to their nickname.
+
+     +S     - 'SSL Only'. This will prevent anyone from joining your
+              channel if they are not connected via SSL.
+
+WITH PARAMETERS:
+----------------
+
+     +k     - 'Key'. This will require users joining to know the key,
+              they must then use /join #channel KEY
+
+              PARAMS: /mode #channel +k key
+
+     +l     - 'Limit'. This will prevent more than LIMIT number of people
+              in the channel at any time.
+
+              PARAMS: /mode #channel +l limit
+
+     +v     - 'Voice'. This will allow a user to talk in a moderated (+m)
+              channel.  Shown by the +nick flag.
+
+              PARAMS: /mode #channel +vvvv nick1 nick2 nick3 nick4
+
+     +h     - 'Half-op'. This will allow a user to set all of the above
+              modes, (and some more below..), whilst stopping the user
+              from doing harm to the channel.  Users who are +h CANNOT
+              kick opped (+o) users, or set modes +h/-h/+o/-o.
+
+              They can perform all other modes, and can kick regular users.
+
+              PARAMS: /mode #channel +hhhh nick1 nick2 nick3 nick4
+
+     +o     - 'Op'. This gives the user control over half-opped, voiced,
+              and regular users. An opped user may op other users,
+              set any mode except +q and +a, and remove ops from whoever
+              they want. Opped users cannot perform actions against owners,
+              or protected users. 
+
+              PARAMS: /mode #channel +oooo nick1 nick2 nick3 nick4
+
+     +a     - 'Protected/Admin'. This gives the user control over opped,
+              half-opped, voiced, and regular users. A protected/admin
+              user may op other users, set any mode except +q and +a,
+              and remove ops from whoever they want. Protected/admin users
+              cannot perform actions against owners or other protected users.
+
+              PARAMS: /mode #channel +aaaa nick1 nick2 nick3 nick4
+
+     +q     - 'Owner'. This gives the user full control over the channel.
+              A owner may owner/protect/op other users, set any mode, and
+              remove owner/protect/ops from whoever they want.
+
+              PARAMS: /mode #channel +qqqq nick1 nick2 nick3 nick4
+
+     +b     - 'Ban'. This will prevent a user from entering the channel,
+              based on a nick!ident@host match.
+
+              PARAMS: /mode #channel +bbbb n!u@h1b n!u@h2b n!u@h3b n!u@h4
+
+     +e     - 'Exempt'. This will allow a user to join a channel even if
+              they are banned (+b), based on a nick!ident@host match.
+
+              PARAMS: /mode #channel +eeee n!u@h1b n!u@h2b n!u@h3b n!u@h4
+
+     +I     - 'Invite Exempt'. This will allow a user to join an
+              invite-only (+i) channel, based on a nick!user@host match.
+
+              PARAMS: /mode #channel +IIII n!u@h1b n!u@h2b n!u@h3b n!u@h4
+
