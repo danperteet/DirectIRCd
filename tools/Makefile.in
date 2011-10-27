@@ -23,7 +23,7 @@ exec_prefix	= $(DESTDIR)@exec_prefix@
 bindir		= $(DESTDIR)@bindir@
 datarootdir	= $(DESTDIR)@datarootdir@
 
-PROGS		= mkpasswd @ENCSPEED@
+PROGS		= mkpasswd genssl.sh @ENCSPEED@
 
 all: $(PROGS)
 
@@ -37,6 +37,8 @@ mkpasswd: ../include/setup.h mkpasswd.c
 	$(CC) $(CFLAGS) $(INCLUDES) $(LDFLAGS) mkpasswd.c -o mkpasswd $(CRYPT_LIB)
 
 # Default rule for everything
+
+genssl.sh:
 
 clean:
 	$(RM) -f *.o *~ core *.exe $(PROGS)
