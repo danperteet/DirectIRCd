@@ -1,0 +1,38 @@
+--------------------------------------------------------------------------------
+
+INSTALLATION:
+-------------
+Installation instructions are contained within INSTALL
+
+SUPPORT:
+--------
+There is a mailing list for discussion of ratbox issues,
+ To subscribe, visit:
+      http://lists.ratbox.org/cgi-bin/mailman/listinfo/ircd-ratbox
+
+You may also (if youre lucky) find us on #ratbox@EFNet
+
+Note you should *always* check the logfile first.
+
+BUG REPORTS:
+------------
+If you run this code and encounter problems, you must report
+the bug by EMAIL to ircd-ratbox@lists.ratbox.org
+
+Please include a gdb backtrace and keep the core file, binaries and 
+modules in case the developers need them.
+
+MODULE RESTARTS:
+----------------
+Note a running module should never be modified directly whilst it is loaded
+into ircd as the behaviour of the OS can result in a core when this is done.
+
+When upgrading modules, you should never simply cp over a module that is
+loaded into ircd.  You may delete it then cp, mv it, unload the module from
+ircd first, move the directory out of the way and start again or numerous
+other things.
+
+Just *dont* do something like: cp m_foo.so ~/ircd/modules/
+
+--------------------------------------------------------------------------------
+$Id: README 21191 2005-11-13 22:16:05Z leeh $

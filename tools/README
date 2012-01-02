@@ -1,0 +1,17 @@
+$Id: README 21574 2006-01-04 22:07:54Z leeh $
+
+A directory of support programs for ircd.
+
+convertconf.c   - converts a Hybrid 5 or 6 conf file to the new
+                  style.  will not convert I:
+convertilines.c - convert hybrid 5/6 I: to auth {};
+convertklines.c - convert Hybrid 5/6 and early 7beta kline.conf files
+                  to the new spreadsheet like format.
+encspeed.c      - test the speed of various encryption algorithms used in
+                  cryptlinks
+mkpasswd.c      - makes password for O lines
+untabify        - converts tab characters to a specific number of spaces
+viconf.c        - edit your conf file without having to chdir su etc. etc.
+                  also locks the file if file locking is used.
+                  viconf is also installed with hard links as vimotd and
+                  viklines, to edit those files in a locked mode.

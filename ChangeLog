@@ -1,0 +1,2992 @@
+androsyn    2010/01/25 16:41:18 UTC	(20100125_1-26748)
+  Log:
+  tag ratbox 2.2.9
+
+  Modified:
+	ircd-ratbox/tags/RATBOX_2_2_9/ (File Added) 
+
+
+androsyn    2010/01/25 16:36:01 UTC	(20100125_0-26746)
+  Log:
+  add critical fixes for bugs in /quote HELP and /LINKS - thanks to spb@efnet for pointing these out. Also update RELNOTES and patchlevel.h for 2.2.9
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/RELNOTES (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/patchlevel.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_links.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/cache.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/irc_string.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/lex.yy.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/y.tab.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/y.tab.h (File Modified) 
+
+
+androsyn    2008/11/22 16:35:58 UTC	(20081122_0-26234)
+  Log:
+  sid should be defined as sid[4] not [3], somebody forgot space for the trailing \0
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/s_conf.h (File Modified) 
+
+
+androsyn    2008/09/06 15:07:39 UTC	(20080906_0-26024)
+  Log:
+  add a missing argument to LOAD2HI
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/contrib/m_mkpasswd.c (File Modified) 
+
+
+androsyn    2008/09/02 19:45:29 UTC	(20080902_0-25988)
+  Log:
+  add the majority_gline fix to 2.2
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_gline.c (File Modified) 
+
+
+leeh        2008/06/09 19:13:32 UTC	(20080609_0-25526)
+  Log:
+  - it's impossible to not have an info field in ms_server(), so remove the
+    check to shut gcc up
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_server.c (File Modified) 
+
+
+androsyn    2008/04/21 19:57:03 UTC	(20080421_0-25253)
+  Log:
+  backport from trunk - don't attempt to fflush a file we just closed
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/s_log.c (File Modified) 
+
+
+jilles      2008/02/07 20:45:23 UTC	(20080207_0-25060)
+  Log:
+  Fix a UID leak.
+  (trunk r25058)
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_invite.c (File Modified) 
+
+
+androsyn    2008/01/11 20:28:57 UTC	(20080111_6-24914)
+  Log:
+  ugh again
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/RELNOTES (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/contrib/ircd-shortcut.pl (File Added) 
+	ircd-ratbox/branches/RATBOX_2_2/include/patchlevel.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/s_newconf.h (File Modified) 
+
+
+androsyn    2008/01/11 20:23:04 UTC	(20080111_5-24912)
+  Log:
+  add missing prototype
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/s_newconf.h (File Modified) 
+
+
+androsyn    2008/01/11 20:05:58 UTC	(20080111_4-24908)
+  Log:
+  bleh..update for 2.2.7.1 :(
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/RELNOTES (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/patchlevel.h (File Modified) 
+
+
+androsyn    2008/01/11 20:04:29 UTC	(20080111_3-24906)
+  Log:
+  son of a bitch, messed that up
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/s_newconf.c (File Modified) 
+
+
+androsyn    2008/01/11 19:44:20 UTC	(20080111_2-24902)
+  Log:
+  update RELNOTES and the like for 2.2.7
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/RELNOTES (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/patchlevel.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/version.c.SH (File Modified) 
+
+
+androsyn    2008/01/11 19:02:50 UTC	(20080111_1-24900)
+  Log:
+  backport jilles match_esc fixes and make s_newconf.c compile again
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/match.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_newconf.c (File Modified) 
+
+
+androsyn    2008/01/11 18:59:30 UTC	(20080111_0-24898)
+  Log:
+  Backport find_xline_mask() and find_resv_mask() functions that resolve issues with duplicate
+  xline and resv lookups.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/s_newconf.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_resv.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_xline.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_newconf.c (File Modified) 
+
+
+androsyn    2007/12/20 18:25:10 UTC	(20071220_0-24754)
+  Log:
+  Fix a really stupid off by one error when using linebuf_get in raw mode.  Also add the \0 regardless if the buffer is raw or not.
+  This bug has been hanging around for about 6 years.  Note that this bug is impossible to trigger in 2.2.x, just fixing it for the sake of sanity.
+  
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/linebuf.c (File Modified) 
+
+
+jilles      2007/11/07 17:40:44 UTC	(20071107_0-24473)
+  Log:
+  Backport trunk r23575:
+  Include real hostname in Closing Link message for unknown connections
+  that have sent NICK or USER, in particular banned users.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+
+
+jilles      2007/09/19 19:25:29 UTC	(20070919_0-24410)
+  Log:
+  Backport trunk r24408:
+  Don't say that services cannot be killed in ERR_ISCHANSERVICE
+  message (given when trying to kick or deop them), as that's
+  not the case.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/messages.tab (File Modified) 
+
+
+androsyn    2007/07/30 19:49:41 UTC	(20070730_1-24133)
+  Log:
+  Fix parser to only take a list of values when requested
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/ircd_parser.y (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/lex.yy.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/y.tab.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/y.tab.h (File Modified) 
+
+
+androsyn    2007/07/30 15:02:14 UTC	(20070730_0-24125)
+  Log:
+  fix stupid conf line number bug and rerun prebuilt flex/bison generated files
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/ircd_lexer.l (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/lex.yy.c (File Modified) 
+
+
+androsyn    2007/07/24 18:12:06 UTC	(20070724_0-24065)
+  Log:
+  change EmptyString so gcc 4.2 doesn't complain
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/irc_string.h (File Modified) 
+
+
+androsyn    2007/07/17 15:07:43 UTC	(20070717_2-24001)
+  Log:
+  add a missing semicolon
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/s_user.c (File Modified) 
+
+
+androsyn    2007/07/17 15:06:28 UTC	(20070717_1-23999)
+  Log:
+  don't try to use return value of introduce_client anymore
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/s_user.c (File Modified) 
+
+
+androsyn    2007/07/17 02:37:06 UTC	(20070717_0-23995)
+  Log:
+  introduce_client always returns 0, change to void
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/s_user.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_nick.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_user.c (File Modified) 
+
+
+jilles      2007/06/30 22:34:38 UTC	(20070630_0-23975)
+  Log:
+  Backport trunk r23973:
+  monitor: send the same message buffer to all users
+  monitoring a certain nick; the target field of the
+  numeric becomes *, much like server notices
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/doc/monitor.txt (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/send.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/monitor.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/send.c (File Modified) 
+
+
+androsyn    2007/05/31 14:53:52 UTC	(20070531_0-23967)
+  Log:
+  minor mode documentation changes from dubkat
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/doc/modes.txt (File Modified) 
+
+
+jilles      2007/05/18 19:55:53 UTC	(20070518_1-23965)
+  Log:
+  m_webirc: call del_unknown_ip() otherwise the unknown will
+  never be subtracted from the cgiirc ip
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/contrib/m_webirc.c (File Modified) 
+
+
+leeh        2007/05/18 19:38:14 UTC	(20070518_0-23963)
+  Log:
+  - fold conf_connect_allowed() into accept_connection()
+  - extend add_connection() so that exempts {}; apply to max unregistered
+    connections per ip
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/s_conf.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/listener.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/reject.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_conf.c (File Modified) 
+
+
+leeh        2007/05/14 17:25:22 UTC	(20070514_1-23957)
+  Log:
+  - update RELNOTES
+  - revved patchlevel to 2.2.6
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/RELNOTES (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/patchlevel.h (File Modified) 
+
+
+leeh        2007/05/14 17:22:36 UTC	(20070514_0-23955)
+  Log:
+  - fix a potential DoS that could result in resource starvation
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/doc/example.conf (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/doc/example.efnet.conf (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/reject.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/s_conf.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/listener.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/newconf.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/packet.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/reject.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_conf.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_serv.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_user.c (File Modified) 
+
+
+androsyn    2007/05/05 17:48:54 UTC	(20070505_0-23918)
+  Log:
+  add patch from upstream adns that causes adns to spin if tcp connections fail immediately
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/adns/event.c (File Modified) 
+
+
+androsyn    2007/05/02 19:40:12 UTC	(20070502_2-23914)
+  Log:
+  decrackify this empty line stuff ;)
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/cache.c (File Modified) 
+
+
+leeh        2007/05/02 19:23:03 UTC	(20070502_1-23912)
+  Log:
+  - actually, lets do that properly.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/cache.c (File Modified) 
+
+
+leeh        2007/05/02 19:21:11 UTC	(20070502_0-23910)
+  Log:
+  - fix a minor memleak when freeing cached files
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/cache.c (File Modified) 
+
+
+leeh        2007/04/26 18:28:10 UTC	(20070426_0-23881)
+  Log:
+  - update RELNOTES
+  - revved patchlevel to 2.2.5
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/RELNOTES (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/patchlevel.h (File Modified) 
+
+
+jilles      2007/04/24 17:38:54 UTC	(20070424_1-23873)
+  Log:
+  Backport trunk r23871:
+  webirc bugfix
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/contrib/m_webirc.c (File Modified) 
+
+
+jilles      2007/04/24 15:48:34 UTC	(20070424_0-23869)
+  Log:
+  Backport trunk r23855,23857,23863:
+  SAVE documentation
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/doc/collision_fnc.txt (File Added) 
+
+
+leeh        2007/04/22 16:16:45 UTC	(20070422_3-23859)
+  Log:
+  - add capab SAVETS_100 to note we SAVE at TS 100, and warn when servers link
+    with SAVE but without SAVETS_100
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/s_serv.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_serv.c (File Modified) 
+
+
+jilles      2007/04/22 14:09:34 UTC	(20070422_2-23853)
+  Log:
+  Backport trunk r23851:
+  SAVE: make the nickTS of the UID nick equal to 100, so it
+  is always in sync on the network.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_nick.c (File Modified) 
+
+
+jilles      2007/04/22 11:36:48 UTC	(20070422_1-23847)
+  Log:
+  Backport trunk r23845:
+  Force nickTS to increase when a local user changes their nick.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_nick.c (File Modified) 
+
+
+leeh        2007/04/22 11:34:54 UTC	(20070422_0-23843)
+  Log:
+  - move the test for a user having tripped nickflood up a few lines, so that
+    if a user cannot change nick we do not penalise them any further.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_nick.c (File Modified) 
+
+
+jilles      2007/04/17 21:40:12 UTC	(20070417_0-23833)
+  Log:
+  Backport trunk r23745:
+  Don't show the UID if a TS6 server sends a kick with
+  an empty or no comment. Note that ratbox never sends
+  such kicks, but csircd does.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_kick.c (File Modified) 
+
+
+jilles      2007/04/03 00:29:51 UTC	(20070403_0-23797)
+  Log:
+  Repair operspy who !#channel, broken by my ** fix.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_who.c (File Modified) 
+
+
+jilles      2007/03/28 14:07:26 UTC	(20070328_1-23734)
+  Log:
+  Backport trunk r23732:
+  For --enable-services, do not show channels when using
+  whois on a service (+S).
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_whois.c (File Modified) 
+
+
+jilles      2007/03/28 13:39:32 UTC	(20070328_0-23730)
+  Log:
+  Backport trunk r23728:
+  Fix /who on channels with ** in their name.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_who.c (File Modified) 
+
+
+jilles      2007/02/28 00:36:35 UTC	(20070228_1-23682)
+  Log:
+  Backport trunk r23656:
+  Fix invisible count being corrupted when +i is set
+  on oper up using operator::umodes.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/s_user.c (File Modified) 
+
+
+androsyn    2007/02/28 00:18:16 UTC	(20070228_0-23678)
+  Log:
+  tweak the +f messages a bit
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/s_conf.c (File Modified) 
+
+
+androsyn    2007/02/27 20:37:34 UTC	(20070227_0-23674)
+  Log:
+  don't leak spoofed ip address on +f notices
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/s_conf.c (File Modified) 
+
+
+leeh        2007/02/14 19:01:30 UTC	(20070214_1-23626)
+  Log:
+  - clarify that TMODE can come from a server, and TS6 mandates MODE is
+    translated into TMODE from other servers too
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/doc/technical/ts6.txt (File Modified) 
+
+
+leeh        2007/02/14 18:48:15 UTC	(20070214_0-23624)
+  Log:
+  - update TS6 specification to include the new rules for JOIN, namely that
+    the mode value must always be propagated as "+" and must never be
+    interpreted
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/doc/technical/ts6.txt (File Modified) 
+
+
+jilles      2007/02/11 19:36:19 UTC	(20070211_0-23610)
+  Log:
+  Backport trunk r23608:
+  Don't lose a kqueue update when there are very many at a time.
+  
+  charybdis r3205 (nenolod)
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/kqueue.c (File Modified) 
+
+
+androsyn    2007/02/06 19:54:10 UTC	(20070206_2-23604)
+  Log:
+  change the ircsprintf calls to ircsnprintf out of a bit of paranoia
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_kline.c (File Modified) 
+
+
+androsyn    2007/02/06 19:48:35 UTC	(20070206_1-23602)
+  Log:
+  tweak the mangle_wildcard_to_cidr code a little..
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_kline.c (File Modified) 
+
+
+androsyn    2007/02/06 18:33:55 UTC	(20070206_0-23598)
+  Log:
+  fix dumb bug in mangle_wildcard_to_cidr
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_kline.c (File Modified) 
+
+
+androsyn    2007/02/05 17:22:52 UTC	(20070205_0-23594)
+  Log:
+  fix modules/Makefile.in to link against IRCDLIBS
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/Makefile.in (File Modified) 
+
+
+jilles      2007/01/23 18:42:56 UTC	(20070123_0-23509)
+  Log:
+  Add support for receiving and propagating SAVE messages
+  (nick collision FNC). We never generate SAVE messages at
+  this time.
+  
+  From charybdis (jilles).
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/numeric.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/s_serv.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_nick.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/messages.tab (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_serv.c (File Modified) 
+
+
+jilles      2007/01/22 18:12:25 UTC	(20070122_0-23507)
+  Log:
+  Change TS6 JOIN processing
+  - don't send out simple modes in TS6 JOIN and TS5 SJOIN when
+    a local user joins an existing channel
+  - don't send out simple modes in TS6 JOIN and TS5 SJOIN when
+    propagating a TS6 JOIN
+  - don't interpret simple modes in an incoming TS6 JOIN
+  
+  This is to avoid desyncs when certain mode changes (e.g. -im)
+  cross with joins. A downside is that simple modes will be
+  more desynched when a JOIN creates a channel or lowers TS,
+  but that's less important.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_join.c (File Modified) 
+
+
+leeh        2007/01/20 14:41:45 UTC	(20070120_0-23503)
+  Log:
+  - disable the check which allows a permanent kline to be set when a
+    temporary one exists that matches, as adding another find function to
+    return all available klines isn't going to happen in -stable
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_kline.c (File Modified) 
+
+
+androsyn    2007/01/14 00:23:40 UTC	(20070114_0-23457)
+  Log:
+  fix bug where if the class name was empty the server conf would be borked
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/s_newconf.c (File Modified) 
+
+
+leeh        2007/01/06 23:16:50 UTC	(20070106_0-23369)
+  Log:
+  - update RELNOTES
+  - revved patchlevel to 2.2.4
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/RELNOTES (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/patchlevel.h (File Modified) 
+
+
+jilles      2006/11/27 11:44:20 UTC	(20061127_0-23291)
+  Log:
+  Tweak \s code a little.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_etrace.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_testmask.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_xline.c (File Modified) 
+
+
+jilles      2006/11/26 00:56:24 UTC	(20061126_0-23289)
+  Log:
+  Backport trunk r23287:
+  Change vx0's email address, requested by him on IRC.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/doc/Hybrid-team (File Modified) 
+
+
+leeh        2006/10/29 12:28:38 UTC	(20061029_0-23253)
+  Log:
+  - remove the cached storage of how many +beI there are, thereby fixing a
+    case where it can get desynced from reality
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/channel.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_mode.c (File Modified) 
+
+
+androsyn    2006/10/02 14:15:21 UTC	(20061002_0-23083)
+  Log:
+  count escaped wildcards characters as non-wildcards
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/s_newconf.c (File Modified) 
+
+
+androsyn    2006/09/25 14:30:08 UTC	(20060925_0-23071)
+  Log:
+  Remove trace spy notice from being built automagically.  It seems to cause more problems than it solves
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/contrib/Makefile.in (File Modified) 
+
+
+leeh        2006/09/09 15:21:56 UTC	(20060909_0-23037)
+  Log:
+  - make find_channel_membership() choose the most optimal list to search to
+    make ircd more friendly when dealing with services thats in lots of
+    channels
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/channel.c (File Modified) 
+
+
+androsyn    2006/09/05 15:17:49 UTC	(20060905_0-23029)
+  Log:
+  commit jilles change to fix some match_esc stupidness
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/match.c (File Modified) 
+
+
+leeh        2006/09/01 17:56:33 UTC	(20060901_0-23018)
+  Log:
+  - change the default redirs in the config so they aren't sending real users
+    to a real host
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/doc/example.conf (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/doc/example.efnet.conf (File Modified) 
+
+
+androsyn    2006/08/31 20:47:45 UTC	(20060831_0-23014)
+  Log:
+  Fix bug in WEBIRC to deal with hosts being longer than HOSTLEN.  We should use the IP and not
+  truncate the hostname.
+  
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/contrib/m_webirc.c (File Modified) 
+
+
+jilles      2006/08/28 09:49:32 UTC	(20060828_0-23010)
+  Log:
+  backport trunk r23008:
+  kline help file: clarify a bit and remove some obsolete stuff
+  partly suggested by Olin
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/help/opers/kline (File Modified) 
+
+
+jilles      2006/08/27 19:20:24 UTC	(20060827_0-23006)
+  Log:
+  send RPL_WHOISLOGGEDIN (330) in TS6 form if appropriate
+  (trunk r23004)
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_services.c (File Modified) 
+
+
+jilles      2006/08/23 13:08:35 UTC	(20060823_0-22996)
+  Log:
+  Add m_webirc module to contrib, allows showing real host of CGI:IRC users.
+  Differences to the version available on my web page for a while:
+  instructions on how to set it up.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/contrib/Makefile.in (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/contrib/m_webirc.c (File Added) 
+
+
+leeh        2006/08/22 10:15:07 UTC	(20060822_0-22994)
+  Log:
+  - via Rogue_F, need to make lex.yy.c part of make depend too
+  - rerun make depend in src/
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/.depend (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/Makefile.in (File Modified) 
+
+
+jilles      2006/08/09 18:44:18 UTC	(20060809_0-22983)
+  Log:
+  Backport trunk r22981: update /info copyright year.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/version.c.SH (File Modified) 
+
+
+leeh        2006/08/01 20:04:16 UTC	(20060801_0-22952)
+  Log:
+  - regenerate index files
+  - fix INSTALL to correctly reflect configure arguments
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/INSTALL (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/help/opers/index (File Modified) 
+
+
+leeh        2006/07/23 20:51:30 UTC	(20060723_2-22936)
+  Log:
+  - god damnit, I always forget to rename the branch in RELNOTES
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/RELNOTES (File Modified) 
+
+
+leeh        2006/07/23 20:33:49 UTC	(20060723_1-22931)
+  Log:
+  - helps if I alter the string version of the patchlevel..
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/patchlevel.h (File Modified) 
+
+
+leeh        2006/07/23 20:17:52 UTC	(20060723_0-22929)
+  Log:
+  - update RELNOTES
+  - revved patchlevel to 2.2.3 'stable'
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/RELNOTES (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/patchlevel.h (File Modified) 
+
+
+jilles      2006/07/17 16:47:27 UTC	(20060717_0-22886)
+  Log:
+  Backport trunk r22884:
+  Fix too early truncation of JOIN channel list.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_join.c (File Modified) 
+
+
+jilles      2006/07/05 13:35:49 UTC	(20060705_0-22848)
+  Log:
+  Backport trunk r22846:
+  Invalidate can_send ban cache when a TS6 SJOIN clears the ban list.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_sjoin.c (File Modified) 
+
+
+jilles      2006/07/03 22:14:01 UTC	(20060703_0-22844)
+  Log:
+  Backport trunk r22842:
+  Do not send RPL_USERNOTINCHANNEL remotely (MODE +-ov, KICK).
+  Sending them remotely causes UID leaks and is (IMHO) not very
+  useful as the command was successful on the local server.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_kick.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_mode.c (File Modified) 
+
+
+jilles      2006/07/02 20:51:11 UTC	(20060702_0-22840)
+  Log:
+  Backport trunk r22838:
+  Allow servers to send to @#chan and +#chan.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_message.c (File Modified) 
+
+
+androsyn    2006/06/21 19:26:15 UTC	(20060621_0-22826)
+  Log:
+  get select() code to compile and work
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/select.c (File Modified) 
+
+
+leeh        2006/06/06 21:36:52 UTC	(20060606_2-22707)
+  Log:
+  - update RELNOTES
+  - revved patchlevel to 2.2.2
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/RELNOTES (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/patchlevel.h (File Modified) 
+
+
+leeh        2006/06/06 21:27:12 UTC	(20060606_1-22705)
+  Log:
+  - when we get read errors for servers, use +s usermode and log to
+    server.log, instead of +d and ioerror.log
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+
+
+leeh        2006/06/06 20:55:03 UTC	(20060606_0-22701)
+  Log:
+  - this needs packet.h to compile
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_cmessage.c (File Modified) 
+
+
+jilles      2006/06/01 18:14:15 UTC	(20060601_0-22681)
+  Log:
+  End the flood grace period in CPRIVMSG/CNOTICE.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_cmessage.c (File Modified) 
+
+
+jilles      2006/05/30 18:15:06 UTC	(20060530_0-22677)
+  Log:
+  get_client_name() fix
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+
+
+androsyn    2006/05/27 01:22:11 UTC	(20060527_0-22663)
+  Log:
+  deal with files that have lines terminated with either CR or LF in a useful way
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/cache.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/kdparse.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_conf.c (File Modified) 
+
+
+androsyn    2006/05/24 15:45:59 UTC	(20060524_1-22645)
+  Log:
+  remove useless comm_socket in the /dev/zero mmap stuff
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/balloc.c (File Modified) 
+
+
+androsyn    2006/05/24 15:27:55 UTC	(20060524_0-22639)
+  Log:
+  - move the daddr variable down into the non_redundant_klines block
+    gcc 4.x seems to miscompile the previous code on sparc generating SIGBUS
+    further down...
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_dline.c (File Modified) 
+
+
+androsyn    2006/05/23 18:24:00 UTC	(20060523_1-22631)
+  Log:
+  put back the dynamic sleep delay crap for poll()
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/poll.c (File Modified) 
+
+
+androsyn    2006/05/23 17:47:03 UTC	(20060523_0-22629)
+  Log:
+  servlink/io.c needs stdinc for uint32_t
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/servlink/io.c (File Modified) 
+
+
+jilles      2006/05/20 23:31:59 UTC	(20060520_3-22597)
+  Log:
+  Backport trunk r22593:
+  Fix a long standing hybrid 7 bug: when getting a read error
+  on a server, report_error() is called with a %d instead of
+  a %s in the format string ("Lost connection" in +d).
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+
+
+jilles      2006/05/20 23:05:57 UTC	(20060520_2-22595)
+  Log:
+  Backport trunk r22591:
+  Don't pace /list on a single channel.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_list.c (File Modified) 
+
+
+jilles      2006/05/20 20:24:37 UTC	(20060520_1-22587)
+  Log:
+  Revert part of r22583:
+  - There is no such auth{} flag restricted
+  - shared{} flag all does not include locops
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/doc/example.conf (File Modified) 
+
+
+androsyn    2006/05/20 00:31:34 UTC	(20060520_0-22583)
+  Log:
+  darix's cleanups of the example configs
+  
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/doc/example.conf (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/doc/example.efnet.conf (File Modified) 
+
+
+androsyn    2006/05/19 23:59:43 UTC	(20060519_1-22581)
+  Log:
+  remove execute properties from example.conf
+  
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/doc/example.conf  (Property Modified)
+
+
+androsyn    2006/05/19 20:50:15 UTC	(20060519_0-22575)
+  Log:
+  people can suck my nuts and upgrade glibc
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/epoll.c (File Modified) 
+
+
+jilles      2006/05/17 17:34:08 UTC	(20060517_2-22561)
+  Log:
+  Backport trunk r22559:
+  Don't allow TB to set an empty topic.
+  This would be possible if a server sent bad protocol
+  and could cause a crash.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_tb.c (File Modified) 
+
+
+jilles      2006/05/17 14:52:16 UTC	(20060517_1-22543)
+  Log:
+  Default topiclen has been 160 for quite a while now,
+  update help text in configure.
+  (This was already correct in trunk.)
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/configure (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/configure.ac (File Modified) 
+
+
+jilles      2006/05/17 14:11:02 UTC	(20060517_0-22535)
+  Log:
+  Backport trunk r22485:
+  Don't allow servers to QUIT (they should use SQUIT).
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_quit.c (File Modified) 
+
+
+jilles      2006/05/12 19:44:15 UTC	(20060512_2-22463)
+  Log:
+  Backport trunk r22461:
+  Expand blah.blah and blah:blah to *!*@... instead of ...!*@* for bans.
+  (longstanding bug, && instead of ||...)
+  Allows stuff like /mode +b 127.0.0.1 to ban that IP.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_mode.c (File Modified) 
+
+
+jilles      2006/05/12 16:30:43 UTC	(20060512_1-22449)
+  Log:
+  Backport trunk r22447:
+  Add service{} block to example.conf, commented out to
+  avoid trouble if ratbox-services support is not
+  compiled in.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/doc/example.conf (File Modified) 
+
+
+jilles      2006/05/12 15:43:46 UTC	(20060512_0-22441)
+  Log:
+  Backport trunk r22439:
+  Doh! Remove double */ in example confs.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/doc/example.conf (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/doc/example.efnet.conf (File Modified) 
+
+
+androsyn    2006/05/08 17:54:39 UTC	(20060508_3-22423)
+  Log:
+  change u_int32_t to uint32_t in servlink
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/servlink/io.c (File Modified) 
+
+
+leeh        2006/05/08 17:28:36 UTC	(20060508_2-22419)
+  Log:
+  - update RELNOTES
+  - revved patchlevel to 2.2.1
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/RELNOTES (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/patchlevel.h (File Modified) 
+
+
+leeh        2006/05/08 17:27:29 UTC	(20060508_1-22417)
+  Log:
+  - fix a user triggerable memleak
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_capab.c (File Modified) 
+
+
+androsyn    2006/05/08 12:25:00 UTC	(20060508_0-22413)
+  Log:
+  make CAP not core if there is no nickname set yet
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_cap.c (File Modified) 
+
+
+androsyn    2006/05/07 15:39:43 UTC	(20060507_2-22407)
+  Log:
+  fix some type related stuff
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/hash.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/irc_string.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/patricia.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_oper.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/hash.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/irc_string.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/match.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/patricia.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_serv.c (File Modified) 
+
+
+leeh        2006/05/07 10:23:50 UTC	(20060507_1-22395)
+  Log:
+  - remove arpa_type from adns_getaddr()
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/res.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/adns.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_auth.c (File Modified) 
+
+
+leeh        2006/05/07 10:11:36 UTC	(20060507_0-22389)
+  Log:
+  - remove support for resolving ip6.int, the 6bone is being phased out so we
+    dont need this anymore.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/s_auth.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/s_conf.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/newconf.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_auth.c (File Modified) 
+
+
+leeh        2006/04/09 21:13:35 UTC	(20060409_0-22335)
+  Log:
+  - time for a new RPL_YOUREOPER
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/messages.tab (File Modified) 
+
+
+leeh        2006/04/05 20:36:18 UTC	(20060405_1-22275)
+  Log:
+  - that should read stats e, not stats E
+  - 2.2.0 is really here.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/RELNOTES (File Modified) 
+
+
+leeh        2006/04/05 20:17:48 UTC	(20060405_0-22271)
+  Log:
+  - update RELNOTES
+  - revved patchlevel to 2.2.0
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/RELNOTES (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/patchlevel.h (File Modified) 
+
+
+androsyn    2006/03/16 16:38:27 UTC	(20060316_1-22167)
+  Log:
+  change get_class_name to be char instead of const char and remove an unused variable
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/s_conf.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_conf.c (File Modified) 
+
+
+androsyn    2006/03/16 16:30:53 UTC	(20060316_0-22165)
+  Log:
+  - use get_class_name() to get the class name.
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/s_conf.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_testline.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/class.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_conf.c (File Modified) 
+
+
+leeh        2006/03/13 20:48:49 UTC	(20060313_0-22129)
+  Log:
+  - update SVN-Access with right branch info for 'stable'
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/SVN-Access (File Modified) 
+
+
+jilles      2006/03/12 17:07:00 UTC	(20060312_0-22093)
+  Log:
+  User /quote help index was not sorted properly.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/help/Makefile.in (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/help/users/index (File Modified) 
+
+
+leeh        2006/03/11 18:54:02 UTC	(20060311_0-22059)
+  Log:
+  - update RELNOTES
+  - revved patchlevel to 2.2.0rc3
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/RELNOTES (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/patchlevel.h (File Modified) 
+
+
+jilles      2006/03/09 16:13:37 UTC	(20060309_0-22039)
+  Log:
+  RSFNC: consider unknowns also for detecting a collide,
+  otherwise we can get two clients with the same nick.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_services.c (File Modified) 
+
+
+jilles      2006/03/05 22:49:05 UTC	(20060305_1-22003)
+  Log:
+  Global /who:
+  - make sure to clear all marks also if the who was aborted
+    because of too many matches (reverting r21999)
+  - give ERR_TOOMANYMATCHES if too many matches
+  - clarify comments
+  
+  Needs to be merged to trunk
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_who.c (File Modified) 
+
+
+leeh        2006/03/05 20:10:31 UTC	(20060305_0-21999)
+  Log:
+  - fix who_global() not clearing marks properly, and potentially showing
+    clients twice if theyre -i and in a common channel
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_who.c (File Modified) 
+
+
+jilles      2006/02/23 00:09:59 UTC	(20060223_0-21889)
+  Log:
+  Fix errno text in "Error connecting to %s: %s (%s)" serverlog.
+  We can only call comm_get_sockerr() once on an fd.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/s_serv.c (File Modified) 
+
+
+leeh        2006/02/22 20:36:01 UTC	(20060222_1-21881)
+  Log:
+  - remove the special case for *\ that was messing up the logic in
+    match_esc()
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/match.c (File Modified) 
+
+
+leeh        2006/02/22 18:11:11 UTC	(20060222_0-21878)
+  Log:
+  - remove default of needing identd to *@*
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/doc/example.conf (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/doc/example.efnet.conf (File Modified) 
+
+
+androsyn    2006/02/21 19:12:53 UTC	(20060221_1-21876)
+  Log:
+  really get the /dev/poll stuff working
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/devpoll.c (File Modified) 
+
+
+androsyn    2006/02/21 18:11:29 UTC	(20060221_0-21874)
+  Log:
+  Get rid of the POLL_LENGTH stuff in src/devpoll.c
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/devpoll.c (File Modified) 
+
+
+leeh        2006/02/13 18:56:20 UTC	(20060213_0-21868)
+  Log:
+  - backport r21866
+    - Respect ban exceptions in /knock.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_knock.c (File Modified) 
+
+
+leeh        2006/02/08 21:22:04 UTC	(20060208_2-21862)
+  Log:
+  - revved patchlevel to 2.2.0rc2
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/patchlevel.h (File Modified) 
+
+
+leeh        2006/02/08 21:02:41 UTC	(20060208_1-21860)
+  Log:
+  - update testmask/masktrace help files, noting they take cidr masks
+  - update RELNOTES and whats-new-2.2.txt with latest changes
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/RELNOTES (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/doc/whats-new-2.2.txt (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/help/opers/masktrace (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/help/opers/testmask (File Modified) 
+
+
+leeh        2006/02/08 20:37:05 UTC	(20060208_0-21858)
+  Log:
+  - keep RPL_TESTMASK next to numeric 724 and note it was used previously
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/messages.tab (File Modified) 
+
+
+leeh        2006/02/07 19:38:15 UTC	(20060207_1-21854)
+  Log:
+  - add some more log entries for when we drop server connections
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/s_serv.c (File Modified) 
+
+
+leeh        2006/02/07 19:29:02 UTC	(20060207_0-21852)
+  Log:
+  - add close_logfiles(), to close all open logfiles
+  - make both SIGTERM handler and mo_die() call new ircd_shutdown(), which
+    will notify users, close logfiles and remove pidfile
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/ircd.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/s_log.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_die.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/ircd.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/ircd_signal.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_log.c (File Modified) 
+
+
+leeh        2006/02/06 22:19:04 UTC	(20060206_1-21850)
+  Log:
+  - backport r21812
+    - update testmask help with gecos stuff
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/help/opers/testmask (File Modified) 
+
+
+leeh        2006/02/06 20:10:02 UTC	(20060206_0-21838)
+  Log:
+  - fix match_esc() logic
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/match.c (File Modified) 
+
+
+androsyn    2006/02/03 14:25:03 UTC	(20060203_0-21830)
+  Log:
+  do a match() against sockhost as well for testmask and masktrace
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_etrace.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_testmask.c (File Modified) 
+
+
+jilles      2006/02/02 17:29:23 UTC	(20060202_0-21824)
+  Log:
+  Call cleanup_challenge() before oper_up(), so the real opername
+  is not cleared (which would cause a crash later).
+  
+  Needs to be merged to trunk.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_oper.c (File Modified) 
+
+
+jilles      2006/01/27 13:07:17 UTC	(20060127_1-21808)
+  Log:
+  (some from trunk r21806)
+  - add masktrace and unreject help files
+  - mention chantrace and masktrace operspy features in operspy help file
+  - remove obsolete eob and testmaskgecos help files
+  - regenerate index files
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/help/opers/eob (File Deleted) 
+	ircd-ratbox/branches/RATBOX_2_2/help/opers/index (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/help/opers/masktrace (File Added) 
+	ircd-ratbox/branches/RATBOX_2_2/help/opers/operspy (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/help/opers/testmaskgecos (File Deleted) 
+	ircd-ratbox/branches/RATBOX_2_2/help/opers/unreject (File Added) 
+	ircd-ratbox/branches/RATBOX_2_2/help/users/index (File Modified) 
+
+
+jilles      2006/01/27 12:08:24 UTC	(20060127_0-21804)
+  Log:
+  Backport trunk r21790:
+  Fix listener name for wildcard bind. Assumes that serverinfo{}                  
+  is before listen{}.                                                             
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/listener.c (File Modified) 
+
+
+androsyn    2006/01/25 21:58:53 UTC	(20060125_1-21788)
+  Log:
+  - backport MASKTRACE and new TESTMASK from trunk
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/irc_string.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_etrace.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_testmask.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/match.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/messages.tab (File Modified) 
+
+
+leeh        2006/01/25 20:46:52 UTC	(20060125_0-21784)
+  Log:
+  - fix log_client_name() so its safe for empty client_p->name
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+
+
+androsyn    2006/01/23 19:12:53 UTC	(20060123_1-21776)
+  Log:
+  get contrib to compile again
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/contrib/spy_admin_notice.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/contrib/spy_info_notice.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/contrib/spy_links_notice.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/contrib/spy_motd_notice.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/contrib/spy_stats_notice.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/contrib/spy_stats_p_notice.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/contrib/spy_trace_notice.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/contrib/spy_whois_notice.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/contrib/spy_whois_notice_global.c (File Modified) 
+
+
+androsyn    2006/01/23 18:13:31 UTC	(20060123_0-21772)
+  Log:
+  remove the NULL read/write handler log messages from epoll.c
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/epoll.c (File Modified) 
+
+
+leeh        2006/01/20 19:36:53 UTC	(20060120_4-21741)
+  Log:
+  - update RELNOTES and whats-new-2.2.txt
+  - revved patchlevel to 2.2.0rc1
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/RELNOTES (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/doc/whats-new-2.2.txt (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/patchlevel.h (File Modified) 
+
+
+leeh        2006/01/20 19:23:23 UTC	(20060120_3-21735)
+  Log:
+  - replace challenge.txt with the new one I wrote
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/doc/challenge.txt (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/doc/whats-new-2.2.txt (File Modified) 
+
+
+leeh        2006/01/20 19:22:18 UTC	(20060120_2-21733)
+  Log:
+  - add a whats-new-2.2.txt
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/doc/whats-new-2.2.txt (File Added) 
+
+
+leeh        2006/01/20 19:12:33 UTC	(20060120_1-21731)
+  Log:
+  - update RELNOTES
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/RELNOTES (File Modified) 
+
+
+leeh        2006/01/20 19:09:22 UTC	(20060120_0-21729)
+  Log:
+  - add default_max_clients option to serverinfo {};, specifies the default
+    /set option for maxclients
+  - refuse to start if shell fd limits are too low
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/doc/example.conf (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/doc/example.efnet.conf (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/defaults.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/s_conf.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_set.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/ircd.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/newconf.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_conf.c (File Modified) 
+
+
+leeh        2006/01/19 22:36:10 UTC	(20060119_1-21727)
+  Log:
+  - add some logging when we drop servers in places where we only notify opers
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_server.c (File Modified) 
+
+
+leeh        2006/01/19 18:59:08 UTC	(20060119_0-21724)
+  Log:
+  - backport r21721
+    add int *ret to base64_decode, so we can return the length of the decoded
+    string
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/irc_string.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_oper.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/irc_string.c (File Modified) 
+
+
+jilles      2006/01/18 22:56:08 UTC	(20060118_0-21713)
+  Log:
+  Backport trunk r21711:
+  Add m_error to core_module_table, so it is loaded by default.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/modules.c (File Modified) 
+
+
+leeh        2006/01/14 23:34:59 UTC	(20060114_5-21698)
+  Log:
+  - remove HARD_FDLIMIT_ from config.h, its unused
+  - build y.tab.c and lex.yy.c when we need to, but dont remove them on make
+    clean
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/config.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/config.h.dist (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/Makefile.in (File Modified) 
+
+
+jilles      2006/01/14 21:02:22 UTC	(20060114_4-21688)
+  Log:
+  Backport trunk r21680:
+  Remove old nextconnect variable. try_connections() calls
+  have been controlled by the event system for years.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/ircd.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/ircd.c (File Modified) 
+
+
+leeh        2006/01/14 20:55:28 UTC	(20060114_3-21686)
+  Log:
+  - dont build y.tab.c/lex.yy.c unless specifically requested by make parser
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/Makefile.in (File Modified) 
+
+
+jilles      2006/01/14 17:16:22 UTC	(20060114_2-21684)
+  Log:
+  Notify user and don't keep challenge state if generating the
+  challenge fails (e.g. old-style key).
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_oper.c (File Modified) 
+
+
+leeh        2006/01/14 16:13:54 UTC	(20060114_1-21682)
+  Log:
+  - test the length of the challenge response is SHA_DIGEST_LENGTH before we
+    do a memcmp() on it.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_oper.c (File Modified) 
+
+
+jilles      2006/01/14 13:05:15 UTC	(20060114_0-21678)
+  Log:
+  Backport trunk r21676:
+  Fix downlink counts in RPL_TRACESERVER, by recursing over
+  the QS data.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_trace.c (File Modified) 
+
+
+androsyn    2006/01/13 18:39:34 UTC	(20060113_5-21662)
+  Log:
+  add MAX_CONNECTIONS to info
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_info.c (File Modified) 
+
+
+jilles      2006/01/13 18:23:41 UTC	(20060113_4-21660)
+  Log:
+  Make sure this compiles again and doesn't go into 100% cpu loop
+  doing nothing when connected to.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/m_info.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/ircd.c (File Modified) 
+
+
+androsyn    2006/01/13 16:34:14 UTC	(20060113_3-21656)
+  Log:
+  remove the max clients stuff from autoconf as well
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/configure (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/configure.ac (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/setup.h.in (File Modified) 
+
+
+androsyn    2006/01/13 16:33:18 UTC	(20060113_2-21654)
+  Log:
+  remove a few c++ style comments. i'm sure somebody will complain when they compile it with a ancient compiler
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/commio.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/patricia.c (File Modified) 
+
+
+leeh        2006/01/13 16:04:32 UTC	(20060113_1-21650)
+  Log:
+  - remove all the link_u and link_s crap, generate it on the fly in
+    report_this_status()
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_trace.c (File Modified) 
+
+
+androsyn    2006/01/13 15:58:24 UTC	(20060113_0-21648)
+  Log:
+  replace MAXCONNECTIONS/MASTER_MAX/HARD_FDLIMIT/IRCD_CODERS_ARE_NUTJOBS with maxconnections
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/defaults.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/ircd.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_set.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/commio.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/devpoll.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/ircd.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/listener.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/poll.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/restart.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_auth.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_serv.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/select.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/sigio.c (File Modified) 
+
+
+androsyn    2006/01/12 16:14:57 UTC	(20060112_0-21638)
+  Log:
+  - get rid of ndelay related garbage and just use a static sleep time
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/poll.c (File Modified) 
+
+
+jilles      2006/01/11 23:23:47 UTC	(20060111_1-21636)
+  Log:
+  Revert src/irc_string.c part of r21588: it breaks IPV6 compile
+  at least on FreeBSD.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/irc_string.c (File Modified) 
+
+
+androsyn    2006/01/11 15:06:38 UTC	(20060111_0-21616)
+  Log:
+  get rid of s_zip.h
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/s_zip.h (File Deleted) 
+
+
+leeh        2006/01/08 20:35:09 UTC	(20060108_3-21604)
+  Log:
+  - dont overload challenge into passwd field, give it back its own field.
+    We memset() passwd on exit, which we cant do with a challenge response.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_oper.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+
+
+leeh        2006/01/08 20:18:17 UTC	(20060108_2-21602)
+  Log:
+  - make get_client_name() support unknown users without a nick properly
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+
+
+jilles      2006/01/08 19:16:34 UTC	(20060108_1-21598)
+  Log:
+  Update rehash help file (charybdis's rehash help file without
+  the part about remote rehashes).
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/help/opers/rehash (File Modified) 
+
+
+leeh        2006/01/08 16:15:19 UTC	(20060108_0-21596)
+  Log:
+  - remove a cast on MyFree()
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+
+
+leeh        2006/01/07 19:44:44 UTC	(20060107_0-21592)
+  Log:
+  - import challenge from 3.0
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/irc_string.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/numeric.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/Makefile.in (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_challenge.c (File Deleted) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_oper.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/irc_string.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/messages.tab (File Modified) 
+
+
+leeh        2006/01/06 18:48:24 UTC	(20060106_1-21590)
+  Log:
+  - add -Wunused-function and -Wunused-variable to --enable-warnings, as these
+    are the two we actually care about..
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/configure (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/configure.ac (File Modified) 
+
+
+leeh        2006/01/06 18:41:24 UTC	(20060106_0-21588)
+  Log:
+  - run the compile through -Wunused-macros
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_mode.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_user.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/adns.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/balloc.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/class.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/commio.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/irc_string.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/listener.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/memory.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/patricia.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_conf.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/send.c (File Modified) 
+
+
+androsyn    2006/01/05 16:35:07 UTC	(20060105_0-21578)
+  Log:
+  - get rid of this poll_findslot nonsense and just put the fd in the same spot in the array as it is numbered
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/commio.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/poll.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/sigio.c (File Modified) 
+
+
+leeh        2006/01/04 22:07:54 UTC	(20060104_3-21574)
+  Log:
+  - remove rsa_respond and mkkeypair, moved to respond tree
+  - update README
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/tools/README (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/tools/mkkeypair (File Deleted) 
+	ircd-ratbox/branches/RATBOX_2_2/tools/rsa_respond/ (File Deleted) 
+
+
+androsyn    2006/01/04 22:07:13 UTC	(20060104_2-21572)
+  Log:
+  - Readd rtsigio
+  - Backport the new comm timeout code
+  - Backport new flood_recalc code
+  
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/configure (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/configure.ac (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/commio.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/packet.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/adns.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/commio.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/devpoll.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/epoll.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/kqueue.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/listener.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/packet.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/poll.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/reject.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_auth.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/send.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/sigio.c (File Added) 
+
+
+leeh        2006/01/04 21:10:03 UTC	(20060104_1-21566)
+  Log:
+  - define RATBOX_PROFILE when we do a profile build, and force ircd into
+    foreground mode when defined.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/configure (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/configure.ac (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/setup.h.in (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/ircd.c (File Modified) 
+
+
+leeh        2006/01/04 19:42:17 UTC	(20060104_0-21564)
+  Log:
+  - fix some const issues in irc_string.c and static_modules.c.SH
+  - fix RSFNC to account for the ->name changes
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_services.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/static_modules.c.SH (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/irc_string.c (File Modified) 
+
+
+leeh        2006/01/03 13:19:41 UTC	(20060103_0-21544)
+  Log:
+  - fix bug where temporary nick resvs had a 60x longer expiration time than
+    they shouldve
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_resv.c (File Modified) 
+
+
+androsyn    2005/12/28 13:47:21 UTC	(20051228_2-21536)
+  Log:
+  remove an unused variable
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_whois.c (File Modified) 
+
+
+androsyn    2005/12/28 13:44:39 UTC	(20051228_1-21534)
+  Log:
+  fix iodebug compile.  does anyone actually use this? :P
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/packet.c (File Modified) 
+
+
+androsyn    2005/12/28 13:36:07 UTC	(20051228_0-21532)
+  Log:
+  - fix the completely and totally braindead openssl version detection
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/configure (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/configure.ac (File Modified) 
+
+
+androsyn    2005/12/27 17:20:55 UTC	(20051227_0-21528)
+  Log:
+  change inet_ntoa usage in adns to inetntoa.  eliminates need for -lnsl on solaris. make install-sh executable
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/adns/event.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/adns/general.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/adns/setup.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/adns/types.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/irc_string.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/install-sh  (Property Modified)
+	ircd-ratbox/branches/RATBOX_2_2/src/irc_string.c (File Modified) 
+
+
+jilles      2005/12/23 20:14:22 UTC	(20051223_0-21526)
+  Log:
+  Unbreak compile with --enable-services.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_nick.c (File Modified) 
+
+
+leeh        2005/12/19 18:57:37 UTC	(20051219_0-21510)
+  Log:
+  - m_error() shouldnt use log_client_name() either
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_error.c (File Modified) 
+
+
+leeh        2005/12/18 20:25:20 UTC	(20051218_1-21508)
+  Log:
+  - make -conftest output on stderr only the errors it finds, or nothing at
+    all otherwise.
+  - make -conftest exit(0) when there are no errors, exit(1) when there is
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/ircd.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/ircd.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/newconf.c (File Modified) 
+
+
+leeh        2005/12/18 10:16:09 UTC	(20051218_0-21506)
+  Log:
+  - fix mr_pong() to handle a user who doesnt have a nick
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_pong.c (File Modified) 
+
+
+androsyn    2005/12/14 21:39:08 UTC	(20051214_2-21500)
+  Log:
+  add support for printing configure args in -version
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/configure (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/configure.ac (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/setup.h.in (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/ircd.c (File Modified) 
+
+
+androsyn    2005/12/14 16:16:33 UTC	(20051214_1-21462)
+  Log:
+  wrong tree..revert last commit
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+
+
+androsyn    2005/12/14 16:13:36 UTC	(20051214_0-21460)
+  Log:
+  make show_ip less brain damaged
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+
+
+leeh        2005/12/13 19:26:01 UTC	(20051213_2-21385)
+  Log:
+  - s_auth.c shouldnt be using get_client_name() or log_client_name()
+  - sending out the ip when we run out of fds is pointless
+  - remove a spurious %m in a message
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/s_auth.c (File Modified) 
+
+
+leeh        2005/12/13 16:13:45 UTC	(20051213_1-21381)
+  Log:
+  - revert that, need a different fix
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+
+
+androsyn    2005/12/13 16:05:12 UTC	(20051213_0-21379)
+  Log:
+  Make get_client_name() and log_client_name() deal with ->name possibly
+  being NULL
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+
+
+leeh        2005/12/10 13:44:31 UTC	(20051210_0-21351)
+  Log:
+  - need to allow '/' as a kline wildcard character..
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/match.c (File Modified) 
+
+
+leeh        2005/12/09 21:01:55 UTC	(20051209_5-21349)
+  Log:
+  - fix QUIT for unregistered clients
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_quit.c (File Modified) 
+
+
+leeh        2005/12/09 19:39:53 UTC	(20051209_4-21347)
+  Log:
+  - deny ", in permanent xlines, as this breaks the parser.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_xline.c (File Modified) 
+
+
+leeh        2005/12/09 14:31:41 UTC	(20051209_3-21345)
+  Log:
+  - check resvs against channels are valid channel names
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_resv.c (File Modified) 
+
+
+leeh        2005/12/09 14:11:40 UTC	(20051209_2-21343)
+  Log:
+  - s/ircd_sprintf/ircsprintf for 2.2
+  - better allow kwildchars in a kline
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_kline.c (File Modified) 
+
+
+leeh        2005/12/09 14:08:23 UTC	(20051209_1-21341)
+  Log:
+  - disallow any klines that contain characters that cant actually appear in a
+    clients username or hostname.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_kline.c (File Modified) 
+
+
+leeh        2005/12/09 14:05:30 UTC	(20051209_0-21339)
+  Log:
+  - ms_kill() should be using find_person(), not find_client()
+    otherwise it can generate a core.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_kill.c (File Modified) 
+
+
+leeh        2005/12/03 12:26:39 UTC	(20051203_1-21337)
+  Log:
+  - update some of our documentation
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/CREDITS (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/INSTALL (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/RELNOTES (File Modified) 
+
+
+leeh        2005/12/03 12:10:58 UTC	(20051203_0-21335)
+  Log:
+  - add help for chantrace/testmaskgecos
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/help/opers/chantrace (File Added) 
+	ircd-ratbox/branches/RATBOX_2_2/help/opers/operspy (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/help/opers/testmaskgecos (File Added) 
+
+
+leeh        2005/11/27 18:43:58 UTC	(20051127_0-21319)
+  Log:
+  - make CANTRACE output servername instead of channel
+  - use "0" for spoofs, and "255.255.255.255" for ips we dont have
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_etrace.c (File Modified) 
+
+
+androsyn    2005/11/23 17:21:30 UTC	(20051123_0-21307)
+  Log:
+  backport mangling kline masks like *@10.* and *@10.1.1.* into cidr masks.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_kline.c (File Modified) 
+
+
+leeh        2005/11/22 22:13:36 UTC	(20051122_8-21299)
+  Log:
+  - make the sockhost for spoofed users 255.255.255.255
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_etrace.c (File Modified) 
+
+
+leeh        2005/11/22 21:11:22 UTC	(20051122_7-21297)
+  Log:
+  - handle "chantrace !" properly.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_etrace.c (File Modified) 
+
+
+leeh        2005/11/22 21:01:30 UTC	(20051122_6-21295)
+  Log:
+  - add CHANTRACE command, with operspy support -- oper only.
+    Will output the members of a channel (if youre a member, or use operspy)
+    in ETRACE format.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_etrace.c (File Modified) 
+
+
+leeh        2005/11/22 20:36:43 UTC	(20051122_5-21293)
+  Log:
+  - remove an unused struct
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/s_conf.h (File Modified) 
+
+
+leeh        2005/11/22 19:14:56 UTC	(20051122_4-21289)
+  Log:
+  - remove unused CLIENT_FLOOD define
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/config.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/config.h.dist (File Modified) 
+
+
+leeh        2005/11/22 19:12:36 UTC	(20051122_3-21287)
+  Log:
+  - remove the HIDE_SPOOF_IPS define, its now a config option in general {};
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/doc/example.conf (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/doc/example.efnet.conf (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/config.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/config.h.dist (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/s_conf.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_info.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/lex.yy.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/newconf.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_conf.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_user.c (File Modified) 
+
+
+leeh        2005/11/22 19:02:34 UTC	(20051122_2-21285)
+  Log:
+  - rework the way trace sends out TRACEOPER/TRACEUSER and the spoof ip
+    hiding in it
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_trace.c (File Modified) 
+
+
+leeh        2005/11/22 18:58:07 UTC	(20051122_1-21283)
+  Log:
+  - replace some HIDE_SPOOF_IPS wrapped code with show_ip() calls
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_conf.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_user.c (File Modified) 
+
+
+leeh        2005/11/22 12:38:30 UTC	(20051122_0-21281)
+  Log:
+  - replace all references to get_server_name() with client_p->name
+  - make show_ip accept a NULL source, which indicates we're sending to local
+    opers.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_error.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_server.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_stats.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_trace.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_serv.c (File Modified) 
+
+
+leeh        2005/11/21 20:10:49 UTC	(20051121_4-21277)
+  Log:
+  - replace various calls to get_server_name() with a simple client_p->name
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_error.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_server.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_stats.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_svinfo.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/parse.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_serv.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/send.c (File Modified) 
+
+
+leeh        2005/11/21 19:45:08 UTC	(20051121_3-21275)
+  Log:
+  - hardcode hiding servers ips, theres no good reason to disable it.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/config.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/config.h.dist (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_connect.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_stats.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_serv.c (File Modified) 
+
+
+leeh        2005/11/21 19:39:16 UTC	(20051121_2-21273)
+  Log:
+  - USE_LOGFILE doesnt do anything at all
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/config.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/config.h.dist (File Modified) 
+
+
+leeh        2005/11/21 19:37:47 UTC	(20051121_1-21271)
+  Log:
+  - remove IGNORE_BOGUS_TS, its pointless and not particularly nice
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/doc/server-version-info (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/config.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/config.h.dist (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_join.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_sjoin.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_version.c (File Modified) 
+
+
+leeh        2005/11/21 19:30:49 UTC	(20051121_0-21269)
+  Log:
+  - add show_ip_conf(), decides whether we can show the potentially spoofed ip
+    field of an auth to a given person
+  - make report_auth() use show_ip_conf()
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/hostmask.c (File Modified) 
+
+
+leeh        2005/11/20 16:40:19 UTC	(20051120_0-21259)
+  Log:
+  - remove ms_topic(), its a lazylink remnant
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_topic.c (File Modified) 
+
+
+leeh        2005/11/17 22:20:23 UTC	(20051117_4-21239)
+  Log:
+  - make etrace and stats use show_ip() rather than #ifdef HIDE_SPOOF_IPS
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_etrace.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_stats.c (File Modified) 
+
+
+leeh        2005/11/17 22:09:28 UTC	(20051117_3-21237)
+  Log:
+  - make show_ip() far less braindead.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+
+
+leeh        2005/11/17 21:05:54 UTC	(20051117_2-21235)
+  Log:
+  - add some comments about CONF_SKIPUSER
+  - remove some unused bitmasks
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/s_conf.h (File Modified) 
+
+
+leeh        2005/11/17 20:54:26 UTC	(20051117_1-21233)
+  Log:
+  - fix up the test for when we apply CONF_SKIPUSER
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/hostmask.c (File Modified) 
+
+
+leeh        2005/11/17 20:53:33 UTC	(20051117_0-21231)
+  Log:
+  - rework the hostmask hash so that we apply CONF_SKIPUSER in
+    add_conf_by_address() instead of |0x1 when searching.
+  
+    This allows us to evade match() for *@host klines, as well as just dlines
+    and elines, falling back to a simple bitmask check.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_stats.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/hostmask.c (File Modified) 
+
+
+leeh        2005/11/15 21:18:10 UTC	(20051115_1-21223)
+  Log:
+  - merge initUser() into init_client()
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/include/s_conf.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/ircd.c (File Modified) 
+
+
+androsyn    2005/11/15 16:04:43 UTC	(20051115_0-21209)
+  Log:
+  <jilles> - show real errno if we fail to connect to a server
+  <jilles> - don't disclose server ip on irc
+  
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/s_serv.c (File Modified) 
+
+
+leeh        2005/11/14 21:02:43 UTC	(20051114_5-21205)
+  Log:
+  - we only store channel invites for local users, so move it from struct User
+    to struct LocalUser
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_invite.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/channel.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_stats.c (File Modified) 
+
+
+androsyn    2005/11/14 19:18:41 UTC	(20051114_4-21203)
+  Log:
+  add prebuilt versions of the lexer/parser
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/src/lex.yy.c (File Added) 
+	ircd-ratbox/branches/RATBOX_2_2/src/y.tab.c (File Added) 
+	ircd-ratbox/branches/RATBOX_2_2/src/y.tab.h (File Added) 
+
+
+leeh        2005/11/14 19:08:20 UTC	(20051114_3-21201)
+  Log:
+  - make ->name in struct Client a simple const char *, for servers it points
+    to the scache, for users it points to the new ->nick in struct User.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_join.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_nick.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_server.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_sjoin.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_ison.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/ircd.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/parse.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_serv.c (File Modified) 
+
+
+leeh        2005/11/14 18:06:08 UTC	(20051114_2-21199)
+  Log:
+  - add a bitmask for clients who have sent USER, test this instead of
+    sptr->user
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/core/m_nick.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_cap.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_pong.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_user.c (File Modified) 
+
+
+leeh        2005/11/14 17:35:23 UTC	(20051114_1-21197)
+  Log:
+  - replace some checks for sptr->name[0] with !EmptyString(sptr->name)
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_cap.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_pong.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_user.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_whois.c (File Modified) 
+
+
+leeh        2005/11/14 17:34:14 UTC	(20051114_0-21195)
+  Log:
+  - add TESTMASKGECOS, to test a given gecos mask in the same manner as
+    testmask
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/numeric.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_testmask.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/messages.tab (File Modified) 
+
+
+leeh        2005/11/13 22:18:17 UTC	(20051113_6-21193)
+  Log:
+  - move Hybrid-team into doc/
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/Hybrid-team (File Deleted) 
+	ircd-ratbox/branches/RATBOX_2_2/doc/Hybrid-team (File Added) 
+
+
+leeh        2005/11/13 22:16:05 UTC	(20051113_5-21191)
+  Log:
+  - rename README.FIRST to README
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/README (File Added) 
+	ircd-ratbox/branches/RATBOX_2_2/README.FIRST (File Deleted) 
+
+
+leeh        2005/11/13 22:15:22 UTC	(20051113_4-21189)
+  Log:
+  - remove BUGS
+  - move the tail end of RELNOTES and rework it to be a new README.FIRST
+  - note RELNOTES in INSTALL
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/BUGS (File Deleted) 
+	ircd-ratbox/branches/RATBOX_2_2/INSTALL (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/README.FIRST (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/RELNOTES (File Modified) 
+
+
+leeh        2005/11/13 22:01:09 UTC	(20051113_3-21187)
+  Log:
+  - update the testmask help
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/help/opers/testmask (File Modified) 
+
+
+leeh        2005/11/13 21:59:37 UTC	(20051113_2-21185)
+  Log:
+  - note we pick the best io subsystem, and nicklen/topiclen
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/INSTALL (File Modified) 
+
+
+leeh        2005/11/13 21:55:25 UTC	(20051113_1-21183)
+  Log:
+  - a shiny new INSTALL document
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/INSTALL (File Modified) 
+
+
+leeh        2005/11/13 21:38:23 UTC	(20051113_0-21181)
+  Log:
+  - sync info up to the config
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_info.c (File Modified) 
+
+
+leeh        2005/11/12 12:57:00 UTC	(20051112_0-21179)
+  Log:
+  - remove FLAGS_SENDQEX, simply pass it as an argument to dead_link()
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/send.c (File Modified) 
+
+
+leeh        2005/11/11 12:00:13 UTC	(20051111_2-21177)
+  Log:
+  - remove auth_oper from LocalUser, overload it into opername.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_challenge.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_user.c (File Modified) 
+
+
+leeh        2005/11/11 11:51:03 UTC	(20051111_1-21175)
+  Log:
+  - move ctrlfd from LocalUser -> servlink_data
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_serv.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/send.c (File Modified) 
+
+
+leeh        2005/11/11 11:50:12 UTC	(20051111_0-21173)
+  Log:
+  - s/host/hostname
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_testmask.c (File Modified) 
+
+
+leeh        2005/11/09 22:00:34 UTC	(20051109_13-21171)
+  Log:
+  - require user/host to be non-empty
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_testmask.c (File Modified) 
+
+
+leeh        2005/11/09 21:57:29 UTC	(20051109_12-21169)
+  Log:
+  - remove 2.1 stuff from CL
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/ChangeLog (File Modified) 
+
+
+leeh        2005/11/09 21:53:57 UTC	(20051109_11-21167)
+  Log:
+  - order the config variables alphabetically
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/s_conf.h (File Modified) 
+
+
+leeh        2005/11/09 21:30:15 UTC	(20051109_10-21165)
+  Log:
+  - remove "response" from LocalUser, overload it into passwd, which is unused
+    and empty by this point.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_challenge.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/client.c (File Modified) 
+
+
+leeh        2005/11/09 21:23:21 UTC	(20051109_9-21163)
+  Log:
+  - move ZipStats from LocalUser -> servlink_data
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_stats.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_serv.c (File Modified) 
+
+
+leeh        2005/11/09 21:18:43 UTC	(20051109_8-21161)
+  Log:
+  - move slinkq parts from LocalUser -> servlink_data
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/s_serv.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/send.c (File Modified) 
+
+
+leeh        2005/11/09 20:37:59 UTC	(20051109_7-21159)
+  Log:
+  - extend testmask to accept n!u@h
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/modules/m_testmask.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_2/src/messages.tab (File Modified) 
+
+
+leeh        2005/11/09 20:09:33 UTC	(20051109_6-21157)
+  Log:
+  - make this 2.2.0beta
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_2/include/patchlevel.h (File Modified) 
+
+
+leeh        2005/11/09 19:52:24 UTC	(20051109_5-21154)
+  Log:
+  - rename struct SlinkRpl to struct servlink_data, and make it dynamically
+    allocated
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/client.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/packet.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/s_serv.c (File Modified) 
+
+
+leeh        2005/11/09 19:43:16 UTC	(20051109_4-21152)
+  Log:
+  - remove some unused bitmasks from client.h
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/core/m_quit.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/client.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/s_conf.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/s_serv.c (File Modified) 
+
+
+leeh        2005/11/09 19:34:17 UTC	(20051109_3-21150)
+  Log:
+  - removed some unused bitmasks from s_conf.h
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/include/s_conf.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/hostmask.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/s_conf.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/s_user.c (File Modified) 
+
+
+leeh        2005/11/09 19:25:58 UTC	(20051109_2-21148)
+  Log:
+  - remove "pnode" from struct ConfItem, its completely unused.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/include/s_conf.h (File Modified) 
+
+
+leeh        2005/11/09 19:23:49 UTC	(20051109_1-21146)
+  Log:
+  - that if() is pointless, as MyFree() will check anyway
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/newconf.c (File Modified) 
+
+
+leeh        2005/11/09 19:22:08 UTC	(20051109_0-21144)
+  Log:
+  - remove "className" from struct ConfItem, every auth should always have
+    c_class which we can reference instead
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/include/s_conf.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/m_testline.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/class.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/newconf.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/s_conf.c (File Modified) 
+
+
+leeh        2005/11/08 22:28:36 UTC	(20051108_13-21142)
+  Log:
+  - actually, I need to think about hopcount a bit more :)
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/core/m_nick.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/core/m_server.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/m_links.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/m_who.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/s_serv.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/s_user.c (File Modified) 
+
+
+leeh        2005/11/08 22:09:05 UTC	(20051108_12-21140)
+  Log:
+  - move hopcount from struct Client into struct Server
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/core/m_nick.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/core/m_server.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/m_links.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/m_who.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/s_serv.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/s_user.c (File Modified) 
+
+
+leeh        2005/11/08 21:58:14 UTC	(20051108_11-21138)
+  Log:
+  - move serial from struct Client to struct LocalUser
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/send.c (File Modified) 
+
+
+leeh        2005/11/08 21:24:00 UTC	(20051108_10-21136)
+  Log:
+  - remove pointless users_last from struct Channel
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/include/channel.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/channel.c (File Modified) 
+
+
+leeh        2005/11/08 21:10:15 UTC	(20051108_9-21134)
+  Log:
+  - make targinfo[2] uint8_t rather than int.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/include/client.h (File Modified) 
+
+
+androsyn    2005/11/08 21:04:24 UTC	(20051108_8-21132)
+  Log:
+  Add proper stdint/inttypes checking.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/aclocal.m4 (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/configure (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/configure.ac (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/include/memory.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/include/setup.h.in (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/include/stdinc.h (File Modified) 
+
+
+leeh        2005/11/08 21:01:45 UTC	(20051108_7-21130)
+  Log:
+  - remove pacing of /away, there are far more productive things to flood
+    with.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/m_away.c (File Modified) 
+
+
+leeh        2005/11/08 20:41:20 UTC	(20051108_6-21128)
+  Log:
+  - remove "server" from struct User, we can reference servptr->name where its
+    needed.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/core/m_join.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/core/m_kill.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/core/m_message.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/core/m_nick.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/m_etrace.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/m_gline.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/m_kline.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/m_locops.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/m_resv.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/m_user.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/m_who.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/m_whois.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/m_xline.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/s_serv.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/s_user.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/whowas.c (File Modified) 
+
+
+leeh        2005/11/08 19:41:45 UTC	(20051108_5-21122)
+  Log:
+  - remove "upid" from struct Server
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/core/m_server.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/s_serv.c (File Modified) 
+
+
+leeh        2005/11/08 19:39:21 UTC	(20051108_4-21120)
+  Log:
+  - remove unused CIPHERKEYLEN
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/include/client.h (File Modified) 
+
+
+leeh        2005/11/08 19:37:52 UTC	(20051108_3-21118)
+  Log:
+  - remove "up" from struct Server, reference client_p->servptr->name instead
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/core/m_server.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/modules/m_links.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/client.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/ircd.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/s_serv.c (File Modified) 
+
+
+leeh        2005/11/08 19:16:22 UTC	(20051108_2-21116)
+  Log:
+  - remove ->user in struct Server, its unused
+  - which means we dont need to refcount struct User
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/include/client.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/client.c (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/src/s_serv.c (File Modified) 
+
+
+leeh        2005/11/08 18:59:58 UTC	(20051108_1-21114)
+  Log:
+  - alter patchlevel
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/include/patchlevel.h (File Modified) 
+
+
+leeh        2005/11/08 18:57:48 UTC	(20051108_0-21112)
+  Log:
+  - create a new branch for memory cleanups
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1_MEMTIDY/ (File Added) 
+
+
+androsyn    2005/11/07 04:06:33 UTC	(20051107_0-21098)
+  Log:
+  using a block heap for patricia tree is mostly pointless
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1/src/patricia.c (File Modified) 
+
+
+leeh        2005/11/06 22:51:55 UTC	(20051106_1-21096)
+  Log:
+  - alter a few of the blockheap allocations
+  - make auth heap its own value
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1/configure (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1/configure.ac (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1/include/setup.h.in (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1/src/s_auth.c (File Modified) 
+
+
+leeh        2005/11/06 22:32:38 UTC	(20051106_0-21094)
+  Log:
+  - dont use a blockheap for the file cache.. its not really needed.
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1/include/balloc.h (File Modified) 
+	ircd-ratbox/branches/RATBOX_2_1/src/cache.c (File Modified) 
+
+
+leeh        2005/11/03 19:36:40 UTC	(20051103_0-21058)
+  Log:
+  - add in a numeric patchlevel
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1/include/patchlevel.h (File Modified) 
+
+
+leeh        2005/10/29 09:58:50 UTC	(20051029_1-21040)
+  Log:
+  - add missing word 'team'
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1/CREDITS (File Modified) 
+
+
+leeh        2005/10/29 09:54:12 UTC	(20051029_0-21034)
+  Log:
+  - add jilles to the CREDITS, this is somewhat overdue..
+  
+
+  Modified:
+	ircd-ratbox/branches/RATBOX_2_1/CREDITS (File Modified) 
+

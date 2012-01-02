@@ -1,0 +1,157 @@
+
+This is the current version of the 'stable' tree of ircd-ratbox.
+
+If you are upgrading from 2.1, you must read doc/whats-new-2.2.txt
+If you are upgrading from 2.0, you must also read doc/whats-new-2.1.txt
+If you are upgrading from 1.x, you must also read doc/whats-new-2.0.txt
+
+-- ircd-ratbox-2.2.9
+- fix a critical user-triggerable crash with /quote HELP on some platforms 
+- fix a user-triggerable crash with /links processing when flatten_links is 
+  disabled
+
+-- ircd-ratbox-2.2.8
+- add a prototype that without makes the ircd dump core on xline on 64bit
+  platforms
+
+-- ircd-ratbox-2.2.7.1
+- fixed a typo in the resv mask stuff :(
+
+-- ircd-ratbox-2.2.7
+- backport match_esc fixes from svn trunk
+- fix searching of duplicate xlines/resv when adding new ones
+- include real hostname in Closing Link messages for unknown connections
+- fix parser to only take lists of options when asked for
+- fix config file line number reporting
+- change EmptyString() macro to work with gcc 4.2
+- make MONITOR reporting more efficient by replacing the target's nickname
+  with * as with server messages
+- make exempts apply to unregistered connections as well
+ 
+
+-- ircd-ratbox-2.2.6
+- upstream adns fix for when tcp connections fail immediately
+- minor memleak fix when rehashing helpfiles etc
+- fix a potential DoS that could result in resource starvation
+
+-- ircd-ratbox-2.2.5
+- fix bug with connect {}; blocks and empty classnames
+- disable allowing permanent klines to be set over temporary klines, as it
+  did not sufficiently check there was also a permanent kline
+- alter TS6 logic slightly on channel joins to help avoid desyncs when
+  a mode is crossing the network in the opposite direction to a JOIN
+- support for receiving and propagating SAVE for future FNC support
+- fix wildcard-to-cidr code slightly
+- fix for kqueue potentially losing updates when it is under high load
+- fix leaking of spoofed ips on +f notices
+- fix invisible count being off when people oper up with a default +i umode
+- fix /who on channels with ** in their name
+- when using --enable-services, hide channels a service is in
+- alter KICK logic to avoid leaking UIDs when we receive a kick with no
+  reason
+- make anti-nickflood code nicer so it avoids trapping users in a situation
+  where everytime they attempt to change nick, it just makes the
+  anti-nickflood apply worse
+- minor bugfix to WEBIRC
+
+-- ircd-ratbox-2.2.4
+- Add m_webirc module to contrib, allows showing real host of CGI:IRC users.
+- send RPL_WHOISLOGGEDIN (330) in TS6 form if appropriate
+- minor conf/documentation updates
+- when finding a member of a channel, choose the shorter of the
+  users/channels list to search
+- count escaped wildcards characters as non-wildcards
+- remove the cached storage of how many +beI there are, thereby fixing a
+  case where it can get desynced from reality
+- improve xline \s code slightly
+
+-- ircd-ratbox-2.2.3
+- fix select() IO code
+- allow servers to send to @#channel and +#channel
+- dont issue ERR_USERNOTINCHANNEL to remote users for modes
+- fix ban cache applying after an sjoin has cleared the ban list
+- fix minor issue rebuilding JOIN list
+
+-- ircd-ratbox-2.2.2
+- fix compile problem in servlink/ on some platforms
+- remove double */ in example confs
+- fix to allow channel +b 127.0.0.1 to be masked properly
+- configure had the wrong default topiclen
+- dont allow topic bursts to clear topics
+- fix epoll issues when specifying it with --enable-epoll
+- various cleanups to the example confs
+- dont pace /list on a single channel
+- fix "Lost connection" showing the error number instead of the string, and
+  for servers output it to +s and server.log instead of +d and iodebug.log
+- fix poll() to not be slow
+- handle conf files that arent terminated in unix format better
+- fix CPRIVMSG/CNOTICE to end the grace period
+
+-- ircd-ratbox-2.2.1
+- remove support for resolving ip6.int, people should be using .arpa
+- minor compile fixes for solaris
+- fix core in client capabilities
+- fix user triggerable memleak
+
+-- ircd-ratbox-2.2.0
+- fix core with stats e
+- sort user /quote help index properly
+
+-- ircd-ratbox-2.2.0rc3
+- respect chanmode +e in /knock
+- fix some solaris /dev/poll stuff
+- more logic fixes for match_esc()
+- fix some minor issues with a global who occasionally skipping clients
+- make /who return ERR_TOOMANYMATCHES when its limits reached
+- fix RSFNC to also collide unknown users
+
+-- ircd-ratbox-2.2.0rc2
+- Fix compilation of contrib/
+- Fix cores with unknown servers
+- TESTMASK has been extended to take a gecos field, and match against CIDR
+  ip masks.
+- New operspy capable MASKTRACE command, works like testmask except actually
+  lists those clients that match.
+- Fix listener name for wildcard binds.
+- Update some help files
+- Fix a core in challenge.
+- Rewrite the logic for match_esc() used by xlines, so that '@' doesnt match
+  a literal '@' etc.
+- Properly exit when we receive SIGTERM.
+- Add some more log entries for when we drop new server connections.
+
+-- ircd-ratbox-2.2.0rc1
+- A large number of memory usage related cleanups which should cut memory
+  usage by a noticable amount.
+- CPU optimisations for the iline/kline/dline hash.
+- Removed rate limiting of /away.
+- Extend TESTMASK to take [nick!]user@host matches.
+- New TESTMASKGECOS command, a TESTMASK for a gecos match.
+- Hardcode hiding servers IPs.
+- HIDE_SPOOF_IPS is now hide_spoof_ips = yes|no; in general {};
+- New CHANTRACE command, an ETRACE for a channel.
+- Mangle klines for user@1.2.3.* to user@1.2.3.0/24 etc.
+- Improved installation documentation.
+- Fix a potential core in kills from a server
+- Various fixes when setting bans (klines etc) which help prevent overriding
+  minimum wildcard limits
+- Output from ircd -conftest is now more streamlined, and will use proper
+  exit codes
+- Fix bug where temporary nick resvs had a 60x longer duration than
+  requested.
+- Add rtsigio back in, an IO subsystem for linux, particularly 2.4 users who
+  do not have epoll.
+- Rewrote the CHALLENGE system.  The respond utils are now in their own tree
+  and there is a native windows port.  See http://respond.ircd-ratbox.org
+- Speed improvements to poll()
+- configure option --with-maxclients is gone, maximum number of clients is
+  now done via the /quote set option, with an upper bound of what the shell
+  tells us our fd limit is.
+
+  You can set the default set option maxclients via serverinfo {};
+  default_max_clients = number;
+- ERROR had somehow been lost from loading.
+- Improved logging in situations where we disallow a servers link.
+
+$Id: RELNOTES 26746 2010-01-25 16:36:01Z androsyn $
+

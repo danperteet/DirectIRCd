@@ -1,0 +1,567 @@
+adns.o: adns.c ../include/stdinc.h ../include/config.h ../include/setup.h \
+  ../include/defaults.h ../include/_stdint.h ../include/setup.h \
+  ../include/res.h ../include/ircd_defs.h ../include/s_log.h \
+  ../include/send.h ../adns/adns.h ../include/stdinc.h \
+  ../include/commio.h ../include/tools.h ../include/ircd.h \
+  ../include/memory.h ../include/balloc.h ../include/ircd_defs.h \
+  ../include/irc_string.h ../include/sprintf_irc.h ../include/send.h \
+  ../include/s_conf.h ../include/class.h ../include/client.h \
+  ../include/linebuf.h ../include/channel.h ../include/res.h \
+  ../include/common.h ../include/patricia.h ../include/irc_string.h \
+  ../include/ircd.h ../include/numeric.h ../include/commio.h \
+  ../include/s_log.h ../include/event.h ../include/client.h \
+  ../include/ircd_defs.h ../include/numeric.h ../adns/internal.h \
+  ../include/config.h ../adns/adns.h ../adns/dlist.h
+balloc.o: balloc.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/setup.h ../include/balloc.h ../include/tools.h \
+  ../include/memory.h ../include/ircd_defs.h ../include/s_log.h \
+  ../include/send.h ../include/balloc.h ../include/ircd_defs.h \
+  ../include/ircd.h ../include/memory.h ../include/irc_string.h \
+  ../include/tools.h ../include/s_log.h ../include/client.h \
+  ../include/linebuf.h ../include/channel.h ../include/res.h \
+  ../adns/adns.h ../include/stdinc.h ../include/commio.h \
+  ../include/ircd.h ../include/ircd_defs.h ../include/irc_string.h \
+  ../include/sprintf_irc.h ../include/event.h
+cache.o: cache.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/ircd_defs.h ../include/s_log.h ../include/ircd_defs.h \
+  ../include/send.h ../include/common.h ../include/s_conf.h \
+  ../include/class.h ../include/tools.h ../include/client.h \
+  ../include/linebuf.h ../include/channel.h ../include/res.h \
+  ../adns/adns.h ../include/stdinc.h ../include/commio.h \
+  ../include/ircd.h ../include/memory.h ../include/balloc.h \
+  ../include/ircd_defs.h ../include/irc_string.h ../include/sprintf_irc.h \
+  ../include/common.h ../include/patricia.h ../include/irc_string.h \
+  ../include/ircd.h ../include/numeric.h ../include/tools.h \
+  ../include/client.h ../include/memory.h ../include/balloc.h \
+  ../include/event.h ../include/hash.h ../include/cache.h \
+  ../include/sprintf_irc.h
+channel.o: channel.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/tools.h ../include/channel.h ../include/ircd_defs.h \
+  ../include/s_log.h ../include/send.h ../include/client.h \
+  ../include/linebuf.h ../include/tools.h ../include/channel.h \
+  ../include/res.h ../adns/adns.h ../include/stdinc.h ../include/commio.h \
+  ../include/ircd.h ../include/memory.h ../include/balloc.h \
+  ../include/ircd_defs.h ../include/irc_string.h ../include/sprintf_irc.h \
+  ../include/common.h ../include/hash.h ../include/hook.h \
+  ../include/irc_string.h ../include/sprintf_irc.h ../include/ircd.h \
+  ../include/numeric.h ../include/s_serv.h ../include/s_user.h \
+  ../include/send.h ../include/whowas.h ../include/client.h \
+  ../include/s_conf.h ../include/class.h ../include/common.h \
+  ../include/patricia.h ../include/irc_string.h ../include/ircd.h \
+  ../include/numeric.h ../include/s_newconf.h ../include/event.h \
+  ../include/memory.h ../include/balloc.h ../include/s_log.h
+class.o: class.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/config.h ../include/tools.h ../include/class.h \
+  ../include/tools.h ../include/client.h ../include/ircd_defs.h \
+  ../include/s_log.h ../include/send.h ../include/linebuf.h \
+  ../include/channel.h ../include/res.h ../adns/adns.h \
+  ../include/stdinc.h ../include/commio.h ../include/ircd.h \
+  ../include/memory.h ../include/balloc.h ../include/ircd_defs.h \
+  ../include/irc_string.h ../include/sprintf_irc.h ../include/common.h \
+  ../include/ircd.h ../include/numeric.h ../include/s_conf.h \
+  ../include/class.h ../include/client.h ../include/common.h \
+  ../include/patricia.h ../include/irc_string.h ../include/ircd.h \
+  ../include/numeric.h ../include/s_newconf.h ../include/send.h \
+  ../include/irc_string.h ../include/memory.h ../include/patricia.h
+client.o: client.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/config.h ../include/tools.h ../include/client.h \
+  ../include/ircd_defs.h ../include/s_log.h ../include/send.h \
+  ../include/linebuf.h ../include/tools.h ../include/channel.h \
+  ../include/res.h ../adns/adns.h ../include/stdinc.h ../include/commio.h \
+  ../include/ircd.h ../include/memory.h ../include/balloc.h \
+  ../include/ircd_defs.h ../include/irc_string.h ../include/sprintf_irc.h \
+  ../include/class.h ../include/common.h ../include/event.h \
+  ../include/hash.h ../include/irc_string.h ../include/sprintf_irc.h \
+  ../include/ircd.h ../include/s_gline.h ../include/numeric.h \
+  ../include/packet.h ../include/s_auth.h ../include/commio.h \
+  ../include/s_conf.h ../include/class.h ../include/client.h \
+  ../include/common.h ../include/patricia.h ../include/irc_string.h \
+  ../include/ircd.h ../include/numeric.h ../include/s_newconf.h \
+  ../include/s_log.h ../include/s_serv.h ../include/s_stats.h \
+  ../include/send.h ../include/whowas.h ../include/s_user.h \
+  ../include/linebuf.h ../include/memory.h ../include/hostmask.h \
+  ../include/balloc.h ../include/listener.h ../include/hook.h \
+  ../include/msg.h ../include/monitor.h
+commio.o: commio.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/config.h ../include/commio.h ../include/ircd_defs.h \
+  ../include/s_log.h ../include/send.h ../include/tools.h \
+  ../include/class.h ../include/client.h ../include/linebuf.h \
+  ../include/channel.h ../include/res.h ../adns/adns.h \
+  ../include/stdinc.h ../include/commio.h ../include/ircd.h \
+  ../include/memory.h ../include/balloc.h ../include/ircd_defs.h \
+  ../include/irc_string.h ../include/sprintf_irc.h ../include/common.h \
+  ../include/event.h ../include/irc_string.h ../include/sprintf_irc.h \
+  ../include/ircd.h ../include/linebuf.h ../include/listener.h \
+  ../include/numeric.h ../include/packet.h ../include/res.h \
+  ../include/restart.h ../include/s_auth.h ../include/s_conf.h \
+  ../include/class.h ../include/client.h ../include/common.h \
+  ../include/patricia.h ../include/irc_string.h ../include/ircd.h \
+  ../include/numeric.h ../include/s_log.h ../include/s_serv.h \
+  ../include/s_stats.h ../include/send.h ../include/reject.h \
+  ../include/memory.h
+event.o: event.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/config.h ../include/ircd.h ../include/tools.h \
+  ../include/memory.h ../include/ircd_defs.h ../include/s_log.h \
+  ../include/send.h ../include/balloc.h ../include/event.h \
+  ../include/client.h ../include/linebuf.h ../include/channel.h \
+  ../include/res.h ../adns/adns.h ../include/stdinc.h ../include/commio.h \
+  ../include/ircd.h ../include/ircd_defs.h ../include/irc_string.h \
+  ../include/sprintf_irc.h ../include/send.h ../include/memory.h \
+  ../include/s_log.h ../include/numeric.h
+getopt.o: getopt.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/ircd_getopt.h
+hash.o: hash.c ../include/stdinc.h ../include/config.h ../include/setup.h \
+  ../include/defaults.h ../include/_stdint.h ../include/ircd_defs.h \
+  ../include/s_log.h ../include/ircd_defs.h ../include/send.h \
+  ../include/tools.h ../include/s_conf.h ../include/class.h \
+  ../include/tools.h ../include/client.h ../include/linebuf.h \
+  ../include/channel.h ../include/res.h ../adns/adns.h \
+  ../include/stdinc.h ../include/commio.h ../include/ircd.h \
+  ../include/memory.h ../include/balloc.h ../include/ircd_defs.h \
+  ../include/irc_string.h ../include/sprintf_irc.h ../include/common.h \
+  ../include/patricia.h ../include/irc_string.h ../include/ircd.h \
+  ../include/numeric.h ../include/channel.h ../include/client.h \
+  ../include/common.h ../include/hash.h ../include/irc_string.h \
+  ../include/ircd.h ../include/numeric.h ../include/send.h \
+  ../include/memory.h ../include/msg.h ../include/cache.h \
+  ../include/s_newconf.h
+hook.o: hook.c ../include/stdinc.h ../include/config.h ../include/setup.h \
+  ../include/defaults.h ../include/_stdint.h ../include/memory.h \
+  ../include/ircd_defs.h ../include/s_log.h ../include/send.h \
+  ../include/balloc.h ../include/tools.h ../include/memory.h \
+  ../include/tools.h ../include/hook.h ../include/irc_string.h
+hostmask.o: hostmask.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/memory.h ../include/ircd_defs.h ../include/s_log.h \
+  ../include/send.h ../include/balloc.h ../include/tools.h \
+  ../include/memory.h ../include/ircd_defs.h ../include/s_conf.h \
+  ../include/class.h ../include/client.h ../include/linebuf.h \
+  ../include/channel.h ../include/res.h ../adns/adns.h \
+  ../include/stdinc.h ../include/commio.h ../include/ircd.h \
+  ../include/ircd_defs.h ../include/irc_string.h ../include/sprintf_irc.h \
+  ../include/common.h ../include/patricia.h ../include/irc_string.h \
+  ../include/ircd.h ../include/numeric.h ../include/hostmask.h \
+  ../include/numeric.h ../include/send.h ../include/irc_string.h
+irc_string.o: irc_string.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/sprintf_irc.h ../include/tools.h ../include/irc_string.h \
+  ../include/ircd_defs.h ../include/s_log.h ../include/send.h \
+  ../include/client.h ../include/linebuf.h ../include/tools.h \
+  ../include/channel.h ../include/res.h ../adns/adns.h \
+  ../include/stdinc.h ../include/commio.h ../include/ircd.h \
+  ../include/memory.h ../include/balloc.h ../include/ircd_defs.h \
+  ../include/irc_string.h ../include/sprintf_irc.h ../include/memory.h \
+  ../include/setup.h
+ircd.o: ircd.c ../include/stdinc.h ../include/config.h ../include/setup.h \
+  ../include/defaults.h ../include/_stdint.h ../include/setup.h \
+  ../include/config.h ../include/tools.h ../include/ircd.h \
+  ../include/tools.h ../include/memory.h ../include/ircd_defs.h \
+  ../include/s_log.h ../include/send.h ../include/balloc.h \
+  ../include/channel.h ../include/class.h ../include/client.h \
+  ../include/linebuf.h ../include/channel.h ../include/res.h \
+  ../adns/adns.h ../include/stdinc.h ../include/commio.h \
+  ../include/ircd.h ../include/ircd_defs.h ../include/irc_string.h \
+  ../include/sprintf_irc.h ../include/common.h ../include/event.h \
+  ../include/hash.h ../include/irc_string.h ../include/ircd_signal.h \
+  ../include/sprintf_irc.h ../include/s_gline.h ../include/msg.h \
+  ../include/hostmask.h ../include/numeric.h ../include/parse.h \
+  ../include/res.h ../include/restart.h ../include/s_auth.h \
+  ../include/commio.h ../include/s_conf.h ../include/class.h \
+  ../include/client.h ../include/common.h ../include/patricia.h \
+  ../include/irc_string.h ../include/ircd.h ../include/numeric.h \
+  ../include/s_log.h ../include/s_serv.h ../include/s_stats.h \
+  ../include/scache.h ../include/send.h ../include/whowas.h \
+  ../include/modules.h ../include/parse.h ../include/msg.h \
+  ../include/hook.h ../include/memory.h ../include/hook.h \
+  ../include/ircd_getopt.h ../include/balloc.h ../include/newconf.h \
+  ../include/patricia.h ../include/reject.h ../include/s_newconf.h \
+  ../include/cache.h ../include/monitor.h
+ircd_signal.o: ircd_signal.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/ircd_signal.h ../include/ircd.h ../include/tools.h \
+  ../include/memory.h ../include/ircd_defs.h ../include/s_log.h \
+  ../include/send.h ../include/balloc.h ../include/restart.h \
+  ../include/s_log.h ../include/memory.h ../include/commio.h \
+  ../include/s_conf.h ../include/class.h ../include/client.h \
+  ../include/linebuf.h ../include/channel.h ../include/res.h \
+  ../adns/adns.h ../include/stdinc.h ../include/commio.h \
+  ../include/ircd.h ../include/ircd_defs.h ../include/irc_string.h \
+  ../include/sprintf_irc.h ../include/common.h ../include/patricia.h \
+  ../include/irc_string.h ../include/ircd.h ../include/numeric.h \
+  ../include/client.h ../include/send.h
+kdparse.o: kdparse.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/tools.h ../include/s_log.h ../include/ircd_defs.h \
+  ../include/s_log.h ../include/send.h ../include/s_conf.h \
+  ../include/class.h ../include/tools.h ../include/client.h \
+  ../include/linebuf.h ../include/channel.h ../include/res.h \
+  ../adns/adns.h ../include/stdinc.h ../include/commio.h \
+  ../include/ircd.h ../include/memory.h ../include/balloc.h \
+  ../include/ircd_defs.h ../include/irc_string.h ../include/sprintf_irc.h \
+  ../include/common.h ../include/patricia.h ../include/irc_string.h \
+  ../include/ircd.h ../include/numeric.h ../include/s_newconf.h \
+  ../include/hostmask.h ../include/client.h ../include/irc_string.h \
+  ../include/memory.h ../include/hash.h
+linebuf.o: linebuf.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/tools.h ../include/client.h ../include/ircd_defs.h \
+  ../include/s_log.h ../include/send.h ../include/linebuf.h \
+  ../include/tools.h ../include/channel.h ../include/res.h ../adns/adns.h \
+  ../include/stdinc.h ../include/commio.h ../include/ircd.h \
+  ../include/memory.h ../include/balloc.h ../include/ircd_defs.h \
+  ../include/irc_string.h ../include/sprintf_irc.h ../include/linebuf.h \
+  ../include/memory.h ../include/event.h ../include/balloc.h \
+  ../include/hook.h ../include/commio.h ../include/sprintf_irc.h
+listener.o: listener.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/setup.h ../include/listener.h ../include/ircd_defs.h \
+  ../include/s_log.h ../include/send.h ../include/client.h \
+  ../include/linebuf.h ../include/tools.h ../include/channel.h \
+  ../include/res.h ../adns/adns.h ../include/stdinc.h ../include/commio.h \
+  ../include/ircd.h ../include/memory.h ../include/balloc.h \
+  ../include/ircd_defs.h ../include/irc_string.h ../include/sprintf_irc.h \
+  ../include/irc_string.h ../include/sprintf_irc.h ../include/ircd.h \
+  ../include/ircd_defs.h ../include/numeric.h ../include/commio.h \
+  ../include/s_conf.h ../include/class.h ../include/client.h \
+  ../include/common.h ../include/patricia.h ../include/irc_string.h \
+  ../include/ircd.h ../include/numeric.h ../include/s_newconf.h \
+  ../include/s_stats.h ../include/send.h ../include/memory.h \
+  ../include/s_auth.h ../include/reject.h
+match.o: match.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/config.h ../include/client.h ../include/ircd_defs.h \
+  ../include/s_log.h ../include/send.h ../include/linebuf.h \
+  ../include/tools.h ../include/channel.h ../include/res.h ../adns/adns.h \
+  ../include/stdinc.h ../include/commio.h ../include/ircd.h \
+  ../include/memory.h ../include/balloc.h ../include/ircd_defs.h \
+  ../include/irc_string.h ../include/sprintf_irc.h ../include/ircd.h \
+  ../include/irc_string.h
+memory.o: memory.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/ircd_defs.h ../include/s_log.h ../include/ircd_defs.h \
+  ../include/send.h ../include/ircd.h ../include/tools.h \
+  ../include/memory.h ../include/balloc.h ../include/irc_string.h \
+  ../include/memory.h ../include/client.h ../include/linebuf.h \
+  ../include/channel.h ../include/res.h ../adns/adns.h \
+  ../include/stdinc.h ../include/commio.h ../include/ircd.h \
+  ../include/ircd_defs.h ../include/irc_string.h ../include/sprintf_irc.h \
+  ../include/send.h ../include/tools.h ../include/s_log.h \
+  ../include/restart.h
+modules.o: modules.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/modules.h ../include/parse.h ../include/msg.h \
+  ../include/memory.h ../include/ircd_defs.h ../include/s_log.h \
+  ../include/send.h ../include/balloc.h ../include/tools.h \
+  ../include/hook.h ../include/s_log.h ../include/ircd.h \
+  ../include/client.h ../include/linebuf.h ../include/channel.h \
+  ../include/res.h ../adns/adns.h ../include/stdinc.h ../include/commio.h \
+  ../include/ircd.h ../include/ircd_defs.h ../include/irc_string.h \
+  ../include/sprintf_irc.h ../include/send.h ../include/s_conf.h \
+  ../include/class.h ../include/client.h ../include/common.h \
+  ../include/patricia.h ../include/irc_string.h ../include/ircd.h \
+  ../include/numeric.h ../include/s_newconf.h ../include/numeric.h \
+  ../include/parse.h ../include/ircd_defs.h ../include/irc_string.h \
+  ../include/memory.h ../include/tools.h ../include/sprintf_irc.h
+monitor.o: monitor.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/tools.h ../include/client.h ../include/ircd_defs.h \
+  ../include/s_log.h ../include/send.h ../include/linebuf.h \
+  ../include/tools.h ../include/channel.h ../include/res.h ../adns/adns.h \
+  ../include/stdinc.h ../include/commio.h ../include/ircd.h \
+  ../include/memory.h ../include/balloc.h ../include/ircd_defs.h \
+  ../include/irc_string.h ../include/sprintf_irc.h ../include/memory.h \
+  ../include/balloc.h ../include/monitor.h ../include/hash.h \
+  ../include/event.h ../include/numeric.h
+newconf.o: newconf.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/memory.h ../include/ircd_defs.h ../include/s_log.h \
+  ../include/send.h ../include/balloc.h ../include/tools.h \
+  ../include/memory.h ../include/newconf.h ../include/client.h \
+  ../include/linebuf.h ../include/channel.h ../include/res.h \
+  ../adns/adns.h ../include/stdinc.h ../include/commio.h \
+  ../include/ircd.h ../include/ircd_defs.h ../include/irc_string.h \
+  ../include/sprintf_irc.h ../include/tools.h ../include/ircd_defs.h \
+  ../include/sprintf_irc.h ../include/common.h ../include/s_log.h \
+  ../include/s_conf.h ../include/class.h ../include/common.h \
+  ../include/patricia.h ../include/irc_string.h ../include/ircd.h \
+  ../include/numeric.h ../include/s_user.h ../include/s_newconf.h \
+  ../include/send.h ../include/setup.h ../include/modules.h \
+  ../include/parse.h ../include/msg.h ../include/hook.h \
+  ../include/listener.h ../include/hostmask.h ../include/s_serv.h \
+  ../include/event.h ../include/hash.h ../include/cache.h \
+  ../include/ircd.h
+numeric.o: numeric.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/setup.h ../include/config.h ../include/s_conf.h \
+  ../include/ircd_defs.h ../include/s_log.h ../include/send.h \
+  ../include/class.h ../include/tools.h ../include/client.h \
+  ../include/linebuf.h ../include/channel.h ../include/res.h \
+  ../adns/adns.h ../include/stdinc.h ../include/commio.h \
+  ../include/ircd.h ../include/memory.h ../include/balloc.h \
+  ../include/ircd_defs.h ../include/irc_string.h ../include/sprintf_irc.h \
+  ../include/common.h ../include/patricia.h ../include/irc_string.h \
+  ../include/ircd.h ../include/numeric.h ../include/numeric.h \
+  ../include/irc_string.h ../include/common.h ../include/memory.h \
+  messages.tab
+packet.o: packet.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/tools.h ../include/commio.h ../include/ircd_defs.h \
+  ../include/s_log.h ../include/send.h ../include/tools.h \
+  ../include/s_conf.h ../include/class.h ../include/client.h \
+  ../include/linebuf.h ../include/channel.h ../include/res.h \
+  ../adns/adns.h ../include/stdinc.h ../include/commio.h \
+  ../include/ircd.h ../include/memory.h ../include/balloc.h \
+  ../include/ircd_defs.h ../include/irc_string.h ../include/sprintf_irc.h \
+  ../include/common.h ../include/patricia.h ../include/irc_string.h \
+  ../include/ircd.h ../include/numeric.h ../include/s_serv.h \
+  ../include/client.h ../include/common.h ../include/ircd.h \
+  ../include/parse.h ../include/packet.h ../include/irc_string.h \
+  ../include/memory.h ../include/hook.h ../include/send.h
+parse.o: parse.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/parse.h ../include/client.h ../include/ircd_defs.h \
+  ../include/s_log.h ../include/send.h ../include/linebuf.h \
+  ../include/tools.h ../include/channel.h ../include/res.h ../adns/adns.h \
+  ../include/stdinc.h ../include/commio.h ../include/ircd.h \
+  ../include/memory.h ../include/balloc.h ../include/ircd_defs.h \
+  ../include/irc_string.h ../include/sprintf_irc.h ../include/channel.h \
+  ../include/common.h ../include/hash.h ../include/irc_string.h \
+  ../include/sprintf_irc.h ../include/ircd.h ../include/numeric.h \
+  ../include/s_log.h ../include/s_stats.h ../include/send.h \
+  ../include/msg.h ../include/s_conf.h ../include/class.h \
+  ../include/client.h ../include/common.h ../include/patricia.h \
+  ../include/irc_string.h ../include/ircd.h ../include/numeric.h \
+  ../include/memory.h ../include/s_serv.h
+patricia.o: patricia.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/config.h ../include/ircd_defs.h ../include/s_log.h \
+  ../include/ircd_defs.h ../include/send.h ../include/patricia.h \
+  ../include/class.h ../include/tools.h ../include/client.h \
+  ../include/linebuf.h ../include/channel.h ../include/res.h \
+  ../adns/adns.h ../include/stdinc.h ../include/commio.h \
+  ../include/ircd.h ../include/memory.h ../include/balloc.h \
+  ../include/ircd_defs.h ../include/irc_string.h ../include/sprintf_irc.h \
+  ../include/common.h ../include/irc_string.h ../include/ircd.h \
+  ../include/numeric.h ../include/balloc.h
+reject.o: reject.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/config.h ../include/patricia.h ../include/class.h \
+  ../include/tools.h ../include/client.h ../include/ircd_defs.h \
+  ../include/s_log.h ../include/send.h ../include/linebuf.h \
+  ../include/channel.h ../include/res.h ../adns/adns.h \
+  ../include/stdinc.h ../include/commio.h ../include/ircd.h \
+  ../include/memory.h ../include/balloc.h ../include/ircd_defs.h \
+  ../include/irc_string.h ../include/sprintf_irc.h ../include/common.h \
+  ../include/irc_string.h ../include/ircd.h ../include/numeric.h \
+  ../include/client.h ../include/s_conf.h ../include/patricia.h \
+  ../include/event.h ../include/tools.h ../include/reject.h \
+  ../include/s_stats.h ../include/msg.h
+restart.o: restart.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/tools.h ../include/restart.h ../include/common.h \
+  ../include/ircd.h ../include/tools.h ../include/memory.h \
+  ../include/ircd_defs.h ../include/s_log.h ../include/send.h \
+  ../include/balloc.h ../include/send.h ../include/s_log.h \
+  ../include/client.h ../include/linebuf.h ../include/channel.h \
+  ../include/res.h ../adns/adns.h ../include/stdinc.h ../include/commio.h \
+  ../include/ircd.h ../include/ircd_defs.h ../include/irc_string.h \
+  ../include/sprintf_irc.h ../include/memory.h
+s_auth.o: s_auth.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/config.h ../include/tools.h ../include/s_auth.h \
+  ../include/res.h ../include/ircd_defs.h ../include/s_log.h \
+  ../include/send.h ../adns/adns.h ../include/stdinc.h \
+  ../include/commio.h ../include/tools.h ../include/ircd.h \
+  ../include/memory.h ../include/balloc.h ../include/ircd_defs.h \
+  ../include/irc_string.h ../include/sprintf_irc.h ../include/s_conf.h \
+  ../include/class.h ../include/client.h ../include/linebuf.h \
+  ../include/channel.h ../include/common.h ../include/patricia.h \
+  ../include/irc_string.h ../include/ircd.h ../include/numeric.h \
+  ../include/client.h ../include/common.h ../include/event.h \
+  ../include/irc_string.h ../include/sprintf_irc.h ../include/ircd.h \
+  ../include/numeric.h ../include/packet.h ../include/res.h \
+  ../include/commio.h ../include/s_log.h ../include/s_stats.h \
+  ../include/send.h ../include/memory.h ../include/hook.h
+s_conf.o: s_conf.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/ircd_defs.h ../include/s_log.h ../include/ircd_defs.h \
+  ../include/send.h ../include/tools.h ../include/s_conf.h \
+  ../include/class.h ../include/tools.h ../include/client.h \
+  ../include/linebuf.h ../include/channel.h ../include/res.h \
+  ../adns/adns.h ../include/stdinc.h ../include/commio.h \
+  ../include/ircd.h ../include/memory.h ../include/balloc.h \
+  ../include/ircd_defs.h ../include/irc_string.h ../include/sprintf_irc.h \
+  ../include/common.h ../include/patricia.h ../include/irc_string.h \
+  ../include/ircd.h ../include/numeric.h ../include/s_newconf.h \
+  ../include/s_serv.h ../include/s_stats.h ../include/channel.h \
+  ../include/class.h ../include/client.h ../include/common.h \
+  ../include/event.h ../include/hash.h ../include/irc_string.h \
+  ../include/sprintf_irc.h ../include/ircd.h ../include/listener.h \
+  ../include/hostmask.h ../include/modules.h ../include/parse.h \
+  ../include/msg.h ../include/hook.h ../include/numeric.h \
+  ../include/commio.h ../include/s_log.h ../include/send.h \
+  ../include/s_gline.h ../include/memory.h ../include/balloc.h \
+  ../include/patricia.h ../include/reject.h ../include/cache.h
+s_newconf.o: s_newconf.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/ircd_defs.h ../include/s_log.h ../include/ircd_defs.h \
+  ../include/send.h ../include/common.h ../include/s_conf.h \
+  ../include/class.h ../include/tools.h ../include/client.h \
+  ../include/linebuf.h ../include/channel.h ../include/res.h \
+  ../adns/adns.h ../include/stdinc.h ../include/commio.h \
+  ../include/ircd.h ../include/memory.h ../include/balloc.h \
+  ../include/ircd_defs.h ../include/irc_string.h ../include/sprintf_irc.h \
+  ../include/common.h ../include/patricia.h ../include/irc_string.h \
+  ../include/ircd.h ../include/numeric.h ../include/s_newconf.h \
+  ../include/tools.h ../include/client.h ../include/memory.h \
+  ../include/s_serv.h ../include/send.h ../include/hostmask.h \
+  ../include/newconf.h ../include/hash.h ../include/balloc.h \
+  ../include/event.h ../include/sprintf_irc.h
+s_gline.o: s_gline.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/tools.h ../include/channel.h ../include/ircd_defs.h \
+  ../include/s_log.h ../include/send.h ../include/client.h \
+  ../include/linebuf.h ../include/tools.h ../include/channel.h \
+  ../include/res.h ../adns/adns.h ../include/stdinc.h ../include/commio.h \
+  ../include/ircd.h ../include/memory.h ../include/balloc.h \
+  ../include/ircd_defs.h ../include/irc_string.h ../include/sprintf_irc.h \
+  ../include/common.h ../include/config.h ../include/irc_string.h \
+  ../include/ircd.h ../include/hostmask.h ../include/numeric.h \
+  ../include/commio.h ../include/s_conf.h ../include/class.h \
+  ../include/client.h ../include/common.h ../include/patricia.h \
+  ../include/irc_string.h ../include/ircd.h ../include/numeric.h \
+  ../include/scache.h ../include/send.h ../include/msg.h \
+  ../include/s_serv.h ../include/s_gline.h ../include/hash.h \
+  ../include/event.h ../include/memory.h
+s_log.o: s_log.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/ircd_defs.h ../include/s_log.h ../include/ircd_defs.h \
+  ../include/send.h ../include/s_log.h ../include/s_conf.h \
+  ../include/class.h ../include/tools.h ../include/client.h \
+  ../include/linebuf.h ../include/channel.h ../include/res.h \
+  ../adns/adns.h ../include/stdinc.h ../include/commio.h \
+  ../include/ircd.h ../include/memory.h ../include/balloc.h \
+  ../include/ircd_defs.h ../include/irc_string.h ../include/sprintf_irc.h \
+  ../include/common.h ../include/patricia.h ../include/irc_string.h \
+  ../include/ircd.h ../include/numeric.h ../include/sprintf_irc.h \
+  ../include/send.h ../include/client.h ../include/s_serv.h
+s_serv.o: s_serv.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/tools.h ../include/s_serv.h ../include/class.h \
+  ../include/tools.h ../include/client.h ../include/ircd_defs.h \
+  ../include/s_log.h ../include/send.h ../include/linebuf.h \
+  ../include/channel.h ../include/res.h ../adns/adns.h \
+  ../include/stdinc.h ../include/commio.h ../include/ircd.h \
+  ../include/memory.h ../include/balloc.h ../include/ircd_defs.h \
+  ../include/irc_string.h ../include/sprintf_irc.h ../include/common.h \
+  ../include/event.h ../include/hash.h ../include/irc_string.h \
+  ../include/sprintf_irc.h ../include/ircd.h ../include/ircd_defs.h \
+  ../include/numeric.h ../include/packet.h ../include/res.h \
+  ../include/commio.h ../include/s_conf.h ../include/class.h \
+  ../include/client.h ../include/common.h ../include/patricia.h \
+  ../include/irc_string.h ../include/ircd.h ../include/numeric.h \
+  ../include/s_newconf.h ../include/s_log.h ../include/s_stats.h \
+  ../include/s_user.h ../include/scache.h ../include/send.h \
+  ../include/memory.h ../include/channel.h ../include/hook.h \
+  ../include/msg.h
+s_stats.o: s_stats.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/s_stats.h ../include/client.h ../include/ircd_defs.h \
+  ../include/s_log.h ../include/send.h ../include/linebuf.h \
+  ../include/tools.h ../include/channel.h ../include/res.h ../adns/adns.h \
+  ../include/stdinc.h ../include/commio.h ../include/ircd.h \
+  ../include/memory.h ../include/balloc.h ../include/ircd_defs.h \
+  ../include/irc_string.h ../include/sprintf_irc.h \
+  ../include/irc_string.h ../include/ircd.h ../include/numeric.h \
+  ../include/commio.h ../include/send.h ../include/memory.h \
+  ../include/s_conf.h ../include/class.h ../include/client.h \
+  ../include/common.h ../include/patricia.h ../include/irc_string.h \
+  ../include/ircd.h ../include/numeric.h ../include/s_newconf.h \
+  ../include/whowas.h ../include/hash.h ../include/scache.h \
+  ../include/reject.h
+s_user.o: s_user.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/tools.h ../include/s_user.h ../include/channel.h \
+  ../include/ircd_defs.h ../include/s_log.h ../include/send.h \
+  ../include/class.h ../include/tools.h ../include/client.h \
+  ../include/linebuf.h ../include/channel.h ../include/res.h \
+  ../adns/adns.h ../include/stdinc.h ../include/commio.h \
+  ../include/ircd.h ../include/memory.h ../include/balloc.h \
+  ../include/ircd_defs.h ../include/irc_string.h ../include/sprintf_irc.h \
+  ../include/common.h ../include/hash.h ../include/irc_string.h \
+  ../include/sprintf_irc.h ../include/ircd.h ../include/listener.h \
+  ../include/msg.h ../include/numeric.h ../include/commio.h \
+  ../include/s_conf.h ../include/class.h ../include/client.h \
+  ../include/common.h ../include/patricia.h ../include/irc_string.h \
+  ../include/ircd.h ../include/numeric.h ../include/s_newconf.h \
+  ../include/s_log.h ../include/s_serv.h ../include/s_stats.h \
+  ../include/scache.h ../include/send.h ../include/supported.h \
+  ../include/whowas.h ../include/memory.h ../include/packet.h \
+  ../include/reject.h ../include/cache.h ../include/hook.h \
+  ../include/monitor.h
+scache.o: scache.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/client.h ../include/ircd_defs.h ../include/s_log.h \
+  ../include/send.h ../include/linebuf.h ../include/tools.h \
+  ../include/channel.h ../include/res.h ../adns/adns.h \
+  ../include/stdinc.h ../include/commio.h ../include/ircd.h \
+  ../include/memory.h ../include/balloc.h ../include/ircd_defs.h \
+  ../include/irc_string.h ../include/sprintf_irc.h ../include/common.h \
+  ../include/irc_string.h ../include/ircd.h ../include/numeric.h \
+  ../include/send.h ../include/scache.h ../include/memory.h
+send.o: send.c ../include/stdinc.h ../include/config.h ../include/setup.h \
+  ../include/defaults.h ../include/_stdint.h ../include/tools.h \
+  ../include/send.h ../include/ircd_defs.h ../include/s_log.h \
+  ../include/send.h ../include/channel.h ../include/class.h \
+  ../include/tools.h ../include/client.h ../include/linebuf.h \
+  ../include/channel.h ../include/res.h ../adns/adns.h \
+  ../include/stdinc.h ../include/commio.h ../include/ircd.h \
+  ../include/memory.h ../include/balloc.h ../include/ircd_defs.h \
+  ../include/irc_string.h ../include/sprintf_irc.h ../include/common.h \
+  ../include/irc_string.h ../include/ircd.h ../include/numeric.h \
+  ../include/commio.h ../include/s_serv.h ../include/sprintf_irc.h \
+  ../include/s_conf.h ../include/class.h ../include/client.h \
+  ../include/common.h ../include/patricia.h ../include/irc_string.h \
+  ../include/ircd.h ../include/numeric.h ../include/s_newconf.h \
+  ../include/linebuf.h ../include/s_log.h ../include/memory.h \
+  ../include/hook.h
+snprintf.o: snprintf.c ../include/setup.h ../include/sprintf_irc.h
+tools.o: tools.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/tools.h ../include/balloc.h ../include/tools.h \
+  ../include/memory.h ../include/ircd_defs.h ../include/s_log.h \
+  ../include/send.h ../include/balloc.h
+whowas.o: whowas.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/whowas.h ../include/ircd_defs.h ../include/s_log.h \
+  ../include/send.h ../include/client.h ../include/linebuf.h \
+  ../include/tools.h ../include/channel.h ../include/res.h ../adns/adns.h \
+  ../include/stdinc.h ../include/commio.h ../include/ircd.h \
+  ../include/memory.h ../include/balloc.h ../include/ircd_defs.h \
+  ../include/irc_string.h ../include/sprintf_irc.h ../include/client.h \
+  ../include/common.h ../include/hash.h ../include/irc_string.h \
+  ../include/ircd.h ../include/ircd_defs.h ../include/numeric.h \
+  ../include/s_serv.h ../include/s_user.h ../include/send.h \
+  ../include/s_conf.h ../include/class.h ../include/common.h \
+  ../include/patricia.h ../include/irc_string.h ../include/ircd.h \
+  ../include/numeric.h ../include/memory.h
+lex.yy.o: lex.yy.c ../include/stdinc.h ../include/config.h \
+  ../include/setup.h ../include/defaults.h ../include/_stdint.h \
+  ../include/ircd_defs.h ../include/s_log.h ../include/ircd_defs.h \
+  ../include/send.h ../include/common.h ../include/config.h \
+  ../include/s_log.h ../include/s_conf.h ../include/class.h \
+  ../include/tools.h ../include/client.h ../include/linebuf.h \
+  ../include/channel.h ../include/res.h ../adns/adns.h \
+  ../include/stdinc.h ../include/commio.h ../include/ircd.h \
+  ../include/memory.h ../include/balloc.h ../include/ircd_defs.h \
+  ../include/irc_string.h ../include/sprintf_irc.h ../include/common.h \
+  ../include/patricia.h ../include/irc_string.h ../include/ircd.h \
+  ../include/numeric.h ../include/newconf.h y.tab.h

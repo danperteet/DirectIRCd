@@ -1,0 +1,58 @@
+$Id: INSTALL 22952 2006-08-01 20:04:16Z leeh $
+
+ircd-ratbox installation guide
+ Lee H <lee -at- leeh.co.uk>
+------------------------------
+
+1. If you are upgrading from an older release, read the whats-new files in
+   doc/.  These contain the important notes for changes between major
+   versions.
+
+   The RELNOTES file contains the list of features and fixes since the
+   previous releases.
+
+   The README file contains important notes you should read.
+
+2. Run the configure script.  By default it will attempt to install into
+   /usr/local/ircd.  If you want it to install into this directory, then as
+   root you must first:
+     mkdir /usr/local/ircd
+     chown youruser: /usr/local/ircd
+
+   Then run everything as normal from your username.  ircd-ratbox will not
+   run as root, *nor should any part of the build be run as your root user*.
+
+   If you wish to install ircd-ratbox into a different directory, include
+   the --prefix option:
+     ./configure --prefix=/home/leeh/ircd
+
+   ircd-ratbox will automatically pick the best IO subsystem for use.
+
+   If you are on a "small" network, namely less than 5000 users, pass:
+     --enable-small-net
+
+   If you want ipv6 support:
+     --enable-ipv6
+
+   You should also configure how many clients your server will support:
+     --with-maxclients=NUMBER
+
+   If you wish support for ratbox-services read doc/services.txt and pass:
+     --enable-services
+
+   If your nick length or topic lengths are not 9 and 160 respectively:
+     --with-nicklen=LENGTH
+     --with-topiclen=LENGTH
+
+   See ./configure --help for more options.  Naturally options should be
+   combined so configure is only run once.
+
+3. Run make
+
+4. Run make install
+
+5. Change to the directory it installed to
+
+6. Edit etc/example.conf and save it as etc/ircd.conf
+
+7. Run bin/ircd
