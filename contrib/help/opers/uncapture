@@ -1,5 +1,0 @@
-# $Id: uncapture 129 2005-12-10 00:07:02Z jon $
-UNCAPTURE <nickname> 
-
-The UNCAPTURE command will release a client from capture (e.g. the nickname you pass)
-allowing them to send commands to the server again.

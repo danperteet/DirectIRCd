@@ -1,5 +1,0 @@
-# $Id: testmask 129 2005-12-10 00:07:02Z jon $
-TESTMASK <user@host>
-
-Will test the given user@host mask, reporting how many local and
-global clients match the given mask.

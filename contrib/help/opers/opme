@@ -1,5 +1,0 @@
-# $Id: opme 129 2005-12-10 00:07:02Z jon $
-OPME <channel>
-
-OPME will give chanop status to the operator in the given channel.
-OPME will only work if the channel is opless.

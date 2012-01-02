@@ -1,6 +1,0 @@
-BOPM <nick>
-
-BOPM displays the nick, ident and IP of user
-using nickname given. If user has spoof enabled
-IP is masked with 255.255.255.255 instead.
-
