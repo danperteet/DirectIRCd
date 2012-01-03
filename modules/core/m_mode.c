@@ -807,6 +807,15 @@ chm_ban(struct Client *source_p, struct Channel *chptr,
 			return;
 		*errors |= errorval;
 
+		if (((!IsService(source_p)) && (!IsOper(source_p)) && !alevel) && (mode_type != CHFL_BAN))
+		{
+			if(!(*errors & SM_ERR_NOOPS))
+				sendto_one(source_p, form_str(ERR_CHANOPRIVSNEEDED),
+					   me.name, source_p->name, chptr->chname);
+			*errors |= SM_ERR_NOOPS;
+			return;
+		}
+
 		/* non-ops cant see +eI lists.. */
 		if(alevel != CHFL_CHANOP && mode_type != CHFL_BAN)
 		{
@@ -828,8 +837,7 @@ chm_ban(struct Client *source_p, struct Channel *chptr,
 			   me.name, source_p->name, chptr->chname);
 		return;
 	}
-
-	if(alevel != CHFL_CHANOP)
+	if ((!IsService(source_p)) && (!IsOper(source_p)) && !alevel)
 	{
 		if(!(*errors & SM_ERR_NOOPS))
 			sendto_one(source_p, form_str(ERR_CHANOPRIVSNEEDED),
@@ -1475,7 +1483,7 @@ static struct ChannelMode ModeTable[255] =
   {chm_simple,		MODE_SECRET, 	CHFL_OP },		/* s */
   {chm_simple,		MODE_TOPICLIMIT,  CHFL_OP },	/* t */
   {chm_nosuch,	0,	0 },			/* u */
-  {chm_voice,		0,			       CHFL_HOP },				/* v */
+  {chm_voice,		0,	CHFL_HALFOP },				/* v */
   {chm_nosuch,	0, 	0 },			/* w */
   {chm_nosuch,	0,	0 },			/* x */
   {chm_nosuch,	0,	0 },			/* y */
