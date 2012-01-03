@@ -25,7 +25,12 @@
  */
 
 #ifndef PATCHLEVEL
-#define PATCHLEVEL   "ircd-ratbox-2.2.9"
+#	define VER_MAJOR "0"
+#	define VER_MINOR "1"
+#	define VER_PATCH "0"
+#	define VERSION_DOTED VER_MAJOR "." VER_MINOR "." VER_PATCH
+#	define PROJNAME "DrivenIRCd"
+#	define PATCHLEVEL   "DrivenIRCd-" VERSION_DOTED 
 #define PATCHLEVEL_NUM	0202090500
 
 /* patchlevel numbers:
