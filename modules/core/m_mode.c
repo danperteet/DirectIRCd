@@ -80,6 +80,8 @@ static void set_channel_mode(struct Client *, struct Client *,
 
 static int add_id(struct Client *source_p, struct Channel *chptr, 
 		  const char *banid, dlink_list *list, long mode_type);
+		  
+		  
 
 static struct ChModeChange mode_changes[BUFSIZE];
 static int mode_count;
@@ -906,6 +908,8 @@ chm_ban(struct Client *source_p, struct Channel *chptr,
 	}
 }
 
+
+
 /**
  * static void chm_founder - Handle +/- q mode changes within the system
  * XXX- This implements the previously unavailable prefix's into DirectIRCd
@@ -1458,14 +1462,24 @@ static struct ChannelMode ModeTable[255] =
   {chm_nosuch,	0 ,	0},
   {chm_nosuch,	0,	0 },
   {chm_nosuch,	0,	0 },
-  {chm_admin,	        0,	CHFL_FOUNDER },			/* a */
+  /* a */
+  #ifndef CHMODE_EXPANDED
+  	{chm_nosuch,	0,	0 },
+  #else
+  	{chm_admin,	        0,	CHFL_FOUNDER },			
+  #endif
   {chm_ban,	CHFL_BAN, CHFL_HALFOP },			/* b */
   {chm_nosuch,	0, 	0 },						/* c */
   {chm_nosuch,	0,	0 },						/* d */
   {chm_ban,	CHFL_EXCEPTION, CHFL_OP },			/* e */
   {chm_nosuch,	0,	0 },						/* f */
   {chm_nosuch,	0,	0 },						/* g */
-  {chm_halfop,	0,	CHFL_OP },					/* h */
+  /* h */
+  #ifndef CHMODE_EXPANDED
+  	{chm_nosuch,	0,	0 },					
+  #else
+  	{chm_halfop,	0,	CHFL_OP },				
+  #endif  
   {chm_simple,	MODE_INVITEONLY, CHFL_HALFOP },	/* i */
   {chm_nosuch,	0,	0 },						/* j */
   {chm_key,		0 ,	0},						/* k */
@@ -1474,7 +1488,14 @@ static struct ChannelMode ModeTable[255] =
   {chm_simple,	MODE_NOPRIVMSGS, CHFL_FOUNDER },	/* n */
   {chm_op,		0 ,		 	 CHFL_OP},		/* o */
   {chm_simple,	MODE_PRIVATE,	 CHFL_OP },		/* p */
-  {chm_founder,	0 },			/* q */
+ 
+ /* q */
+#ifndef CHMODE_EXPANDED
+  	{chm_nosuch,	0, 0 },			/* q */
+#else
+  	{chm_founder, 0, CHFL_FOUNDER},
+#endif
+
 #ifdef ENABLE_SERVICES
   {chm_regonly, 0 },			/* r */
 #else

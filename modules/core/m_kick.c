@@ -147,8 +147,7 @@ m_kick(struct Client *client_p, struct Client *source_p, int parc, const char *p
 		return 0;
 
 
-	if ((fmsptr = find_channel_membership(chptr, who))  != NULL)
-	{
+	if ((fmsptr = find_channel_membership(chptr, who))  != NULL) {
 #ifdef ENABLE_SERVICES
 		if(MyClient(source_p) && IsService(who))
 		{

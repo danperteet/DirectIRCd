@@ -4,7 +4,10 @@
 #undef AUTH_HEAP_SIZE
 
 /* Size of the ban heap. */
-#undef BAN_HEAP_SIZE
+#undef BAN_HEAP_SIZE 
+
+/* Expanded channel modes and prefixs. */
+#undef CHMODE_EXPANDED
 
 /* Size of the channel heap. */
 #undef CHANNEL_HEAP_SIZE
@@ -309,7 +312,6 @@
 
 /* If system does not define in_port_t, define it to what it should be. */
 #undef in_port_t
-
 /* Define to `__inline__' or `__inline' if that's what the C compiler
    calls it, or to nothing if 'inline' is not supported under any name.  */
 #ifndef __cplusplus

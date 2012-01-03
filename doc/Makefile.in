@@ -47,11 +47,6 @@ install-mkdirs:
 		mkdir $(DESTDIR)$(confdir); \
 	fi
 
-	-@if test ! -d $(DESTDIR)$(mandir); then \
-		echo "mkdir $(mandir)"; \
-		mkdir $(DESTDIR)$(mandir); \
-	fi
-
 install: install-mkdirs build
 	@echo "ircd: installing example config files ($(CONFS))"
 	@for i in $(CONFS); do \
@@ -76,13 +71,6 @@ install: install-mkdirs build
 	-@if test -f $(DESTDIR)$(confdir)/links.txt; then \
 		$(RM) $(DESTDIR)$(confdir)/links.txt; \
 	fi
-
-	@echo "ircd: installing manpage"
-	@for i in $(MANPAGES); do \
-		if test ! -f $(DESTDIR)$(mandir)/$$i; then \
-			$(INSTALL_DATA) $$i $(DESTDIR)$(mandir); \
-		fi; \
-	done
 
 build:
 

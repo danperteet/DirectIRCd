@@ -113,6 +113,7 @@ struct ChCapCombo
 	int cap_no;
 };
 
+
 /* can_send results */
 #define CAN_SEND_NO	0
 #define CAN_SEND_NONOP  1
@@ -120,10 +121,25 @@ struct ChCapCombo
 
 /* channel status flags */
 #define CHFL_PEON			0x0000	/* normal member of channel */
-#define CHFL_HALFOP		0x0001
-#define CHFL_OP     		0x0002	/* Channel operator */
-#define CHFL_ADMIN		0x0004
-#define CHFL_FOUNDER		0x0008    
+
+/* Twitch
+ * If CHMODE_EXPANDED is not defined set all expanded flags to 0x0002
+ * so we dont break capabilities here. AND we can use the flags regardless
+ * this will also allow us to have some expected behavior.
+ */
+#ifndef CHMODE_EXPANDED
+#	define CHFL_HALFOP	        0x0002 	
+#	define CHFL_OP     			0x0002	
+#	define CHFL_ADMIN			0x0002
+#	define CHFL_FOUNDER		0x0002    
+#else
+#	define CHFL_HALFOP		0x0001
+#	define CHFL_OP     			0x0002	/* Channel operator */
+#	define CHFL_ADMIN			0x0004
+#	define CHFL_FOUNDER		0x0008    
+#endif
+
+
 #define CHFL_VOICE      		0x0010	/* the power to speak */
 #define CHFL_DEOPPED    	0x0020	/* deopped on sjoin, bounce modes */
 #define CHFL_BANNED		0x0040    /* cached as banned */

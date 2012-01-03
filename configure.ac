@@ -10,7 +10,7 @@ AC_PREREQ(2.57)
 dnl Sneaky way to get an Id tag into the configure script
 AC_COPYRIGHT([$Id: configure.ac 22543 2006-05-17 14:52:16Z jilles $])
 
-AC_INIT([directircd],[alpha])
+AC_INIT([DirectIRCd],[alpha])
 
 AC_CONFIG_HEADER(include/setup.h)
 
@@ -522,6 +522,15 @@ dnl End OpenSSL detection
 dnl Specialized functions and libraries
 dnl ===================================
 
+
+AC_ARG_ENABLE(expanded-modes,
+AC_HELP_STRING([--disable-chmode-expanded],[ Disable expanded modes.]),
+[mode_founder=$enableval], [mode_founder="no"])
+
+if test "$mode_founder"=yes; then
+	AC_DEFINE([CHMODE_EXPANDED], 1, [Expanded channel modes and prefixs.])
+fi
+
 AC_ARG_WITH(zlib-path,
 AC_HELP_STRING([--with-zlib-path=DIR],[Path to libz.so for ziplinks support.]),
 [LIBS="$LIBS -L$withval"],)
@@ -531,6 +540,8 @@ AC_HELP_STRING([--disable-zlib],[Disable ziplinks support]),
 [zlib=$enableval],[zlib=yes])
 
 if test "$zlib" = yes; then
+
+
 
 AC_CHECK_HEADER(zlib.h, [
 	AC_CHECK_LIB(z, zlibVersion,
@@ -1188,6 +1199,7 @@ else
 fi
 
 echo "Modules ........................ $tmpresult"
+echo "Expanded Modes ................. $mode_founder"
 echo "IPv6 support ................... $have_v6"
 echo "Net I/O implementation ......... $SELECT_TYPE"
 echo "IO Debugging hooks ............. $iodebug"
