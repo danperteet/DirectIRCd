@@ -7,3 +7,4 @@ TODO 1/3/2012v1 DirectIRCd Development Team
 4. port in charybdis's SASL code
 5. check to make sure ipv6 support actually works
 6. port in plexus hostmasking, and possibly add (more) salts, to make the ip address harder to guess
+7. work on something similar to charybdis's privsets, or Inspircd's operclass function
