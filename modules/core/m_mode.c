@@ -898,6 +898,206 @@ chm_ban(struct Client *source_p, struct Channel *chptr,
 	}
 }
 
+/**
+ * static void chm_founder - Handle +/- q mode changes within the system
+ * XXX- This implements the previously unavailable prefix's into DirectIRCd
+ * we are adding flags CHFL_CHANFNDR which should contain the proper
+ *   CHFL_FNDER =  (CHFL_CHANADMN | CHFL_FOUNDER)
+ *   for short hand purposes.
+ */
+ 
+static void
+chm_founder(struct Client *source_p, struct Channel *chptr, 
+       int alevel, int parc, int *parn,
+       const char **parv, int *errors, int dir, char c, long mode_type)
+{
+	struct membership *mstptr;
+	const char *opnick;
+	struct Client *targ_p;
+
+	if ((!IsService(source_p)) && (!IsOper(source_p)) && !alevel)
+	{
+		if(!(*errors & SM_ERR_NOOPS))
+			sendto_one(source_p, form_str(ERR_CHANOPRIVSNEEDED),
+				   me.name, source_p->name, chptr->chname);
+		*errors |= SM_ERR_NOOPS;
+		return;
+	}
+
+	if((dir == MODE_QUERY) || (parc <= *parn))
+		return;
+
+	opnick = parv[(*parn)];
+	(*parn)++;
+
+	/* empty nick */
+	if(EmptyString(opnick))	{
+		sendto_one_numeric(source_p, ERR_NOSUCHNICK,
+				   form_str(ERR_NOSUCHNICK), "*");
+		return;
+	}
+
+	if((targ_p = find_chasing(source_p, opnick, NULL)) == NULL)
+		return;
+
+	if ((mstptr = find_channel_membership(chptr, targ_p))==NULL)
+	{
+		if(!(*errors & SM_ERR_NOTONCHANNEL) && MyClient(source_p))
+			sendto_one_numeric(source_p, ERR_USERNOTINCHANNEL,
+					   form_str(ERR_USERNOTINCHANNEL), opnick, chptr->chname);
+		*errors |= SM_ERR_NOTONCHANNEL;
+		return;
+	}
+	
+	if(MyClient(source_p) && (++mode_limit > MAXMODEPARAMS))
+		return;
+		
+	mode_changes[mode_count].letter = 'q';
+	mode_changes[mode_count].dir = dir;
+	mode_changes[mode_count].caps = 0;
+	mode_changes[mode_count].nocaps = 0;
+	mode_changes[mode_count].mems = ALL_MEMBERS;
+	mode_changes[mode_count].id = targ_p->id;
+	mode_changes[mode_count].arg = targ_p->name;
+	mode_changes[mode_count++].client = targ_p;
+	
+	if(dir == MODE_ADD) {	
+		mstptr->flags |= CHFL_CHANFNDR;
+		mstptr->flags &= ~CHFL_DEOPPED;
+	} else {
+		mstptr->flags &= ~CHFL_CHANFNDR;
+	}
+}
+
+
+static void
+chm_admin(struct Client *source_p, struct Channel *chptr, 
+       int alevel, int parc, int *parn,
+       const char **parv, int *errors, int dir, char c, long mode_type)
+{
+	struct membership *mstptr;
+	const char *opnick;
+	struct Client *targ_p;
+
+	if ((!IsService(source_p)) && (!IsOper(source_p)) && !alevel)
+	{
+		if(!(*errors & SM_ERR_NOOPS))
+			sendto_one(source_p, form_str(ERR_CHANOPRIVSNEEDED),
+				   me.name, source_p->name, chptr->chname);
+		*errors |= SM_ERR_NOOPS;
+		return;
+	}
+
+	if((dir == MODE_QUERY) || (parc <= *parn))
+		return;
+
+	opnick = parv[(*parn)];
+	(*parn)++;
+
+	/* empty nick */
+	if(EmptyString(opnick))	{
+		sendto_one_numeric(source_p, ERR_NOSUCHNICK,
+				   form_str(ERR_NOSUCHNICK), "*");
+		return;
+	}
+
+	if((targ_p = find_chasing(source_p, opnick, NULL)) == NULL)
+		return;
+
+	if ((mstptr = find_channel_membership(chptr, targ_p))==NULL)
+	{
+		if(!(*errors & SM_ERR_NOTONCHANNEL) && MyClient(source_p))
+			sendto_one_numeric(source_p, ERR_USERNOTINCHANNEL,
+					   form_str(ERR_USERNOTINCHANNEL), opnick, chptr->chname);
+		*errors |= SM_ERR_NOTONCHANNEL;
+		return;
+	}
+	
+	if(MyClient(source_p) && (++mode_limit > MAXMODEPARAMS))
+		return;
+
+	mode_changes[mode_count].letter = 'a';
+	mode_changes[mode_count].dir = dir;
+	mode_changes[mode_count].caps = 0;
+	mode_changes[mode_count].nocaps = 0;
+	mode_changes[mode_count].mems = ALL_MEMBERS;
+	mode_changes[mode_count].id = targ_p->id;
+	mode_changes[mode_count].arg = targ_p->name;
+	mode_changes[mode_count++].client = targ_p;
+	
+	if(dir == MODE_ADD)
+	{	
+		mstptr->flags |= CHFL_CHANADM;
+		mstptr->flags &= ~CHFL_DEOPPED;
+	} else {
+		mstptr->flags &= ~CHFL_CHANADM;
+	}
+}
+
+
+static void
+chm_halfop(struct Client *source_p, struct Channel *chptr, 
+       int alevel, int parc, int *parn,
+       const char **parv, int *errors, int dir, char c, long mode_type)
+{
+	struct membership *mstptr;
+	const char *opnick;
+	struct Client *targ_p;
+
+	if ((!IsService(source_p)) && (!IsOper(source_p)) && !alevel)
+	{
+		if(!(*errors & SM_ERR_NOOPS))
+			sendto_one(source_p, form_str(ERR_CHANOPRIVSNEEDED),
+				   me.name, source_p->name, chptr->chname);
+		*errors |= SM_ERR_NOOPS;
+		return;
+	}
+
+	if((dir == MODE_QUERY) || (parc <= *parn))
+		return;
+
+	opnick = parv[(*parn)];
+	(*parn)++;
+
+	/* empty nick */
+	if(EmptyString(opnick))	{
+		sendto_one_numeric(source_p, ERR_NOSUCHNICK,
+				   form_str(ERR_NOSUCHNICK), "*");
+		return;
+	}
+
+	if((targ_p = find_chasing(source_p, opnick, NULL)) == NULL)
+		return;
+
+	if ((mstptr = find_channel_membership(chptr, targ_p))==NULL)
+	{
+		if(!(*errors & SM_ERR_NOTONCHANNEL) && MyClient(source_p))
+			sendto_one_numeric(source_p, ERR_USERNOTINCHANNEL,
+					   form_str(ERR_USERNOTINCHANNEL), opnick, chptr->chname);
+		*errors |= SM_ERR_NOTONCHANNEL;
+		return;
+	}
+	
+	if(MyClient(source_p) && (++mode_limit > MAXMODEPARAMS))
+		return;
+
+	mode_changes[mode_count].letter = 'h';
+	mode_changes[mode_count].dir = dir;
+	mode_changes[mode_count].caps = 0;
+	mode_changes[mode_count].nocaps = 0;
+	mode_changes[mode_count].mems = ALL_MEMBERS;
+	mode_changes[mode_count].id = targ_p->id;
+	mode_changes[mode_count].arg = targ_p->name;
+	mode_changes[mode_count++].client = targ_p;
+	
+	if(dir == MODE_ADD)
+		mstptr->flags |= CHFL_CHANHOP;
+	else
+		mstptr->flags &= ~CHFL_CHANHOP;
+}
+
+
+
 static void
 chm_op(struct Client *source_p, struct Channel *chptr, 
        int alevel, int parc, int *parn,
@@ -907,7 +1107,7 @@ chm_op(struct Client *source_p, struct Channel *chptr,
 	const char *opnick;
 	struct Client *targ_p;
 
-	if(alevel != CHFL_CHANOP)
+	if ((!IsService(source_p)) && (!IsOper(source_p)) && !alevel)
 	{
 		if(!(*errors & SM_ERR_NOOPS))
 			sendto_one(source_p, form_str(ERR_CHANOPRIVSNEEDED),
@@ -915,6 +1115,7 @@ chm_op(struct Client *source_p, struct Channel *chptr,
 		*errors |= SM_ERR_NOOPS;
 		return;
 	}
+
 
 	if((dir == MODE_QUERY) || (parc <= *parn))
 		return;
@@ -948,48 +1149,26 @@ chm_op(struct Client *source_p, struct Channel *chptr,
 
 	if(MyClient(source_p) && (++mode_limit > MAXMODEPARAMS))
 		return;
-
-	if(dir == MODE_ADD)
-	{
-		if(targ_p == source_p)
+	
+	if ((targ_p == source_p) && (dir == MODE_ADD))
 			return;
 
-		mode_changes[mode_count].letter = c;
-		mode_changes[mode_count].dir = MODE_ADD;
-		mode_changes[mode_count].caps = 0;
-		mode_changes[mode_count].nocaps = 0;
-		mode_changes[mode_count].mems = ALL_MEMBERS;
-		mode_changes[mode_count].id = targ_p->id;
-		mode_changes[mode_count].arg = targ_p->name;
-		mode_changes[mode_count++].client = targ_p;
-
+	mode_changes[mode_count].letter = 'o';
+	mode_changes[mode_count].dir = dir;
+	mode_changes[mode_count].caps = 0;
+	mode_changes[mode_count].nocaps = 0;
+	mode_changes[mode_count].mems = ALL_MEMBERS;
+	mode_changes[mode_count].id = targ_p->id;
+	mode_changes[mode_count].arg = targ_p->name;
+	mode_changes[mode_count++].client = targ_p;
+	
+	if (dir == MODE_ADD) {
 		mstptr->flags |= CHFL_CHANOP;
 		mstptr->flags &= ~CHFL_DEOPPED;
-	}
-	else
-	{
-#ifdef ENABLE_SERVICES
-		if(MyClient(source_p) && IsService(targ_p))
-		{
-			sendto_one(source_p, form_str(ERR_ISCHANSERVICE),
-					me.name, source_p->name, targ_p->name,
-					chptr->chname);
-			return;
-		}
-#endif
-
-		mode_changes[mode_count].letter = c;
-		mode_changes[mode_count].dir = MODE_DEL;
-		mode_changes[mode_count].caps = 0;
-		mode_changes[mode_count].nocaps = 0;
-		mode_changes[mode_count].mems = ALL_MEMBERS;
-		mode_changes[mode_count].id = targ_p->id;
-		mode_changes[mode_count].arg = targ_p->name;
-		mode_changes[mode_count++].client = targ_p;
-
+	} else
 		mstptr->flags &= ~CHFL_CHANOP;
-	}
 }
+
 
 static void
 chm_voice(struct Client *source_p, struct Channel *chptr,
@@ -999,8 +1178,8 @@ chm_voice(struct Client *source_p, struct Channel *chptr,
 	struct membership *mstptr;
 	const char *opnick;
 	struct Client *targ_p;
-
-	if(alevel != CHFL_CHANOP)
+	
+	if ((!IsService(source_p)) && (!IsOper(source_p)) && !alevel)
 	{
 		if(!(*errors & SM_ERR_NOOPS))
 			sendto_one(source_p, form_str(ERR_CHANOPRIVSNEEDED),
@@ -1008,6 +1187,7 @@ chm_voice(struct Client *source_p, struct Channel *chptr,
 		*errors |= SM_ERR_NOOPS;
 		return;
 	}
+
 
 	if((dir == MODE_QUERY) || parc <= *parn)
 		return;
@@ -1024,14 +1204,10 @@ chm_voice(struct Client *source_p, struct Channel *chptr,
 	}
 
 	if((targ_p = find_chasing(source_p, opnick, NULL)) == NULL)
-	{
 		return;
-	}
 
-	mstptr = find_channel_membership(chptr, targ_p);
 
-	if(mstptr == NULL)
-	{
+	if ((mstptr = find_channel_membership(chptr, targ_p))==NULL) {
 		if(!(*errors & SM_ERR_NOTONCHANNEL) && MyClient(source_p))
 			sendto_one_numeric(source_p, ERR_USERNOTINCHANNEL,
 					   form_str(ERR_USERNOTINCHANNEL), opnick, chptr->chname);
@@ -1042,32 +1218,19 @@ chm_voice(struct Client *source_p, struct Channel *chptr,
 	if(MyClient(source_p) && (++mode_limit > MAXMODEPARAMS))
 		return;
 
+	mode_changes[mode_count].letter = c;
+	mode_changes[mode_count].dir = dir;
+	mode_changes[mode_count].caps = 0;
+	mode_changes[mode_count].nocaps = 0;
+	mode_changes[mode_count].mems = ALL_MEMBERS;
+	mode_changes[mode_count].id = targ_p->id;
+	mode_changes[mode_count].arg = targ_p->name;
+	mode_changes[mode_count++].client = targ_p;
+
 	if(dir == MODE_ADD)
-	{
-		mode_changes[mode_count].letter = c;
-		mode_changes[mode_count].dir = MODE_ADD;
-		mode_changes[mode_count].caps = 0;
-		mode_changes[mode_count].nocaps = 0;
-		mode_changes[mode_count].mems = ALL_MEMBERS;
-		mode_changes[mode_count].id = targ_p->id;
-		mode_changes[mode_count].arg = targ_p->name;
-		mode_changes[mode_count++].client = targ_p;
-
 		mstptr->flags |= CHFL_VOICE;
-	}
 	else
-	{
-		mode_changes[mode_count].letter = 'v';
-		mode_changes[mode_count].dir = MODE_DEL;
-		mode_changes[mode_count].caps = 0;
-		mode_changes[mode_count].nocaps = 0;
-		mode_changes[mode_count].mems = ALL_MEMBERS;
-		mode_changes[mode_count].id = targ_p->id;
-		mode_changes[mode_count].arg = targ_p->name;
-		mode_changes[mode_count++].client = targ_p;
-
 		mstptr->flags &= ~CHFL_VOICE;
-	}
 }
 
 static void
@@ -1248,74 +1411,75 @@ struct ChannelMode
 		      const char **parv, int *errors, int dir, 
 		      char c, long mode_type);
 	long mode_type;
+	unsigned long mode_access;
 };
 
 /* *INDENT-OFF* */
 static struct ChannelMode ModeTable[255] =
 {
-  {chm_nosuch,	0 },
-  {chm_nosuch,	0 },			/* A */
-  {chm_nosuch,	0 },			/* B */
-  {chm_nosuch,	0 },			/* C */
-  {chm_nosuch,	0 },			/* D */
-  {chm_nosuch,	0 },			/* E */
-  {chm_nosuch,	0 },			/* F */
-  {chm_nosuch,	0 },			/* G */
-  {chm_nosuch,	0 },			/* H */
-  {chm_ban,	CHFL_INVEX },                    /* I */
-  {chm_nosuch,	0 },			/* J */
-  {chm_nosuch,	0 },			/* K */
-  {chm_nosuch,	0 },			/* L */
-  {chm_nosuch,	0 },			/* M */
-  {chm_nosuch,	0 },			/* N */
-  {chm_nosuch,	0 },			/* O */
-  {chm_nosuch,	0 },			/* P */
-  {chm_nosuch,	0 },			/* Q */
-  {chm_nosuch,	0 },			/* R */
-  {chm_nosuch,	0 },			/* S */
-  {chm_nosuch,	0 },			/* T */
-  {chm_nosuch,	0 },			/* U */
-  {chm_nosuch,	0 },			/* V */
-  {chm_nosuch,	0 },			/* W */
-  {chm_nosuch,	0 },			/* X */
-  {chm_nosuch,	0 },			/* Y */
-  {chm_nosuch,	0 },			/* Z */
-  {chm_nosuch,	0 },
-  {chm_nosuch,	0 },
-  {chm_nosuch,	0 },
-  {chm_nosuch,	0 },
-  {chm_nosuch,	0 },
-  {chm_nosuch,	0 },
-  {chm_nosuch,	0 },			/* a */
-  {chm_ban,	CHFL_BAN },		/* b */
-  {chm_nosuch,	0 },			/* c */
-  {chm_nosuch,	0 },			/* d */
-  {chm_ban,	CHFL_EXCEPTION },	/* e */
-  {chm_nosuch,	0 },			/* f */
-  {chm_nosuch,	0 },			/* g */
-  {chm_nosuch,	0 },			/* h */
-  {chm_simple,	MODE_INVITEONLY },	/* i */
-  {chm_nosuch,	0 },			/* j */
-  {chm_key,	0 },			/* k */
-  {chm_limit,	0 },			/* l */
-  {chm_simple,	MODE_MODERATED },	/* m */
-  {chm_simple,	MODE_NOPRIVMSGS },	/* n */
-  {chm_op,	0 },			/* o */
-  {chm_simple,	MODE_PRIVATE },		/* p */
-  {chm_nosuch,	0 },			/* q */
+  {chm_nosuch,	0 ,	0},
+  {chm_nosuch,	0 ,	0},			/* A */
+  {chm_nosuch,	0 ,	0},			/* B */
+  {chm_nosuch,	0 ,	0},			/* C */
+  {chm_nosuch,	0 ,	0},			/* D */
+  {chm_nosuch,	0 ,	0},			/* E */
+  {chm_nosuch,	0 ,	0},			/* F */
+  {chm_nosuch,	0 ,	0},			/* G */
+  {chm_nosuch,	0 ,	0},			/* H */
+  {chm_ban,  CHFL_INVEX,  CHFL_CHANOP },                    /* I */
+  {chm_nosuch,	0,	0 },			/* J */
+  {chm_nosuch,	0 ,	0},			/* K */
+  {chm_nosuch,	0 ,	0},			/* L */
+  {chm_nosuch,	0 ,	0},			/* M */
+  {chm_nosuch,	0 ,	0},			/* N */
+  {chm_nosuch,	0 ,	0},			/* O */
+  {chm_nosuch,	0 ,	0},			/* P */
+  {chm_nosuch,	0 ,	0},			/* Q */
+  {chm_nosuch,	0 ,	0},			/* R */
+  {chm_nosuch,	0 ,	0},			/* S */
+  {chm_nosuch,	0 ,	0},			/* T */
+  {chm_nosuch,	0 ,	0},			/* U */
+  {chm_nosuch,	0 ,	0},			/* V */
+  {chm_nosuch,	0 ,	0},			/* W */
+  {chm_nosuch,	0 ,	0},			/* X */
+  {chm_nosuch,	0 ,	0},			/* Y */
+  {chm_nosuch,	0 ,	0},			/* Z */
+  {chm_nosuch,	0 ,	0},
+  {chm_nosuch,	0 ,	0},
+  {chm_nosuch,	0 ,	0},
+  {chm_nosuch,	0 ,	0},
+  {chm_nosuch,	0,	0 },
+  {chm_nosuch,	0,	0 },
+  {chm_admin,	        0,	CHFL_FOUNDER },			/* a */
+  {chm_ban,	CHFL_BAN, CHFL_HALFOP },			/* b */
+  {chm_nosuch,	0, 	0 },						/* c */
+  {chm_nosuch,	0,	0 },						/* d */
+  {chm_ban,	CHFL_EXCEPTION, CHFL_OP },			/* e */
+  {chm_nosuch,	0,	0 },						/* f */
+  {chm_nosuch,	0,	0 },						/* g */
+  {chm_halfop,	0,	CHFL_OP },					/* h */
+  {chm_simple,	MODE_INVITEONLY, CHFL_HALFOP },	/* i */
+  {chm_nosuch,	0,	0 },						/* j */
+  {chm_key,		0 ,	0},						/* k */
+  {chm_limit,		0,	0 },						/* l */
+  {chm_simple,	MODE_MODERATED,  CHFL_HALFOP },	/* m */
+  {chm_simple,	MODE_NOPRIVMSGS, CHFL_FOUNDER },	/* n */
+  {chm_op,		0 ,		 	 CHFL_OP},		/* o */
+  {chm_simple,	MODE_PRIVATE,	 CHFL_OP },		/* p */
+  {chm_founder,	0 },			/* q */
 #ifdef ENABLE_SERVICES
   {chm_regonly, 0 },			/* r */
 #else
   {chm_nosuch,	0 },			/* r */
 #endif
-  {chm_simple,	MODE_SECRET },		/* s */
-  {chm_simple,	MODE_TOPICLIMIT },	/* t */
-  {chm_nosuch,	0 },			/* u */
-  {chm_voice,	0 },			/* v */
-  {chm_nosuch,	0 },			/* w */
-  {chm_nosuch,	0 },			/* x */
-  {chm_nosuch,	0 },			/* y */
-  {chm_nosuch,	0 },			/* z */
+  {chm_simple,		MODE_SECRET, 	CHFL_OP },		/* s */
+  {chm_simple,		MODE_TOPICLIMIT,  CHFL_OP },	/* t */
+  {chm_nosuch,	0,	0 },			/* u */
+  {chm_voice,		0,			       CHFL_HOP },				/* v */
+  {chm_nosuch,	0, 	0 },			/* w */
+  {chm_nosuch,	0,	0 },			/* x */
+  {chm_nosuch,	0,	0 },			/* y */
+  {chm_nosuch,	0,	0 },			/* z */
 };
 /* *INDENT-ON* */
 
@@ -1357,7 +1521,8 @@ set_channel_mode(struct Client *client_p, struct Client *source_p,
 	mode_count = 0;
 	mode_limit = 0;
 
-	alevel = get_channel_access(source_p, msptr);
+
+	//alevel = get_channel_access(source_p, msptr);
 
 	for (; (c = *ml) != 0; ml++)
 	{
@@ -1377,6 +1542,8 @@ set_channel_mode(struct Client *client_p, struct Client *source_p,
 				table_position = 0;
 			else
 				table_position = c - 'A' + 1;
+			alevel = has_chan_flag (msptr, ModeTable[table_position].mode_access);
+			print_flags(msptr, ModeTable[table_position].mode_access);
 			ModeTable[table_position].func(source_p, chptr, alevel,
 						       parc, &parn, parv, 
 						       &errors, dir, c, 

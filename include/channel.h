@@ -119,12 +119,22 @@ struct ChCapCombo
 #define CAN_SEND_OPV	2
 
 /* channel status flags */
-#define CHFL_PEON		0x0000	/* normal member of channel */
-#define CHFL_CHANOP     	0x0001	/* Channel operator */
-#define CHFL_VOICE      	0x0002	/* the power to speak */
-#define CHFL_DEOPPED    	0x0004	/* deopped on sjoin, bounce modes */
-#define CHFL_BANNED		0x0008  /* cached as banned */
-#define ONLY_SERVERS		0x0010
+#define CHFL_PEON			0x0000	/* normal member of channel */
+#define CHFL_HALFOP		0x0001
+#define CHFL_OP     		0x0002	/* Channel operator */
+#define CHFL_ADMIN		0x0004
+#define CHFL_FOUNDER		0x0008    
+#define CHFL_VOICE      		0x0010	/* the power to speak */
+#define CHFL_DEOPPED    	0x0020	/* deopped on sjoin, bounce modes */
+#define CHFL_BANNED		0x0040    /* cached as banned */
+#define ONLY_SERVERS		0x0080
+
+#define CHFL_CHANHOP		(CHFL_HALFOP|CHFL_VOICE)
+#define CHFL_CHANOP		(CHFL_OP|CHFL_CHANHOP)
+#define CHFL_CHANADM	        (CHFL_ADMIN|CHFL_CHANOP)
+#define CHFL_CHANFNDR		(CHFL_CHANADM|CHFL_FOUNDER) 
+
+
 #define ALL_MEMBERS		CHFL_PEON
 #define ONLY_CHANOPS		CHFL_CHANOP
 #define ONLY_CHANOPSVOICED	(CHFL_CHANOP|CHFL_VOICE)
@@ -132,6 +142,13 @@ struct ChCapCombo
 #define is_chanop(x)	((x) && (x)->flags & CHFL_CHANOP)
 #define is_voiced(x)	((x) && (x)->flags & CHFL_VOICE)
 #define is_chanop_voiced(x) ((x) && (x)->flags & (CHFL_CHANOP|CHFL_VOICE))
+
+#define is_chanadmin(x)  ((x) && (x)->flags  & CHFL_ADMIN)
+#define is_chanfounder(x)  ((x) && (x)->flags & CHFL_FOUNDER)
+
+#define has_chan_flag(x,y) ((x) && ((x)->flags & (y))) 
+#define print_flags(x, y) printf("%u & %lu = %lu\n", (x)->flags, y, (x)->flags & y)
+
 #define is_deop(x)	((x) && (x)->flags & CHFL_DEOPPED)
 #define can_send_banned(x) ((x) && (x)->flags & CHFL_BANNED)
 
@@ -142,13 +159,14 @@ struct ChCapCombo
 #define MODE_TOPICLIMIT 0x0008
 #define MODE_INVITEONLY 0x0010
 #define MODE_NOPRIVMSGS 0x0020
+
 #define MODE_REGONLY	0x0040
 #define CHFL_BAN        0x0100	/* ban channel flag */
 #define CHFL_EXCEPTION  0x0200	/* exception to ban channel flag */
 #define CHFL_INVEX      0x0400
 
 /* mode flags for direction indication */
-#define MODE_QUERY     0
+#define MODE_QUERY    0 
 #define MODE_ADD       1
 #define MODE_DEL       -1
 

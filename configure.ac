@@ -10,7 +10,7 @@ AC_PREREQ(2.57)
 dnl Sneaky way to get an Id tag into the configure script
 AC_COPYRIGHT([$Id: configure.ac 22543 2006-05-17 14:52:16Z jilles $])
 
-AC_INIT([ircd-ratbox],[stable])
+AC_INIT([directircd],[alpha])
 
 AC_CONFIG_HEADER(include/setup.h)
 
