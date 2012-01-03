@@ -691,7 +691,7 @@ chm_simple(struct Client *source_p, struct Channel *chptr,
 	   int alevel, int parc, int *parn,
 	   const char **parv, int *errors, int dir, char c, long mode_type)
 {
-	if(alevel != CHFL_CHANOP)
+	if ((!IsService(source_p)) && (!IsOper(source_p)) && !alevel)
 	{
 		if(!(*errors & SM_ERR_NOOPS))
 			sendto_one(source_p, form_str(ERR_CHANOPRIVSNEEDED),
@@ -699,7 +699,7 @@ chm_simple(struct Client *source_p, struct Channel *chptr,
 		*errors |= SM_ERR_NOOPS;
 		return;
 	}
-
+	
 	/* +ntspmaikl == 9 + MAXMODEPARAMS (4 * +o) */
 	if(MyClient(source_p) && (++mode_limit > (9 + MAXMODEPARAMS)))
 		return;

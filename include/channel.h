@@ -142,7 +142,7 @@ struct ChCapCombo
 #define is_chanop(x)	((x) && (x)->flags & CHFL_CHANOP)
 #define is_voiced(x)	((x) && (x)->flags & CHFL_VOICE)
 #define is_chanop_voiced(x) ((x) && (x)->flags & (CHFL_CHANOP|CHFL_VOICE))
-
+#define is_chanhalfop(x) ((x) && (x)->flags & (CHFL_HALFOP))
 #define is_chanadmin(x)  ((x) && (x)->flags  & CHFL_ADMIN)
 #define is_chanfounder(x)  ((x) && (x)->flags & CHFL_FOUNDER)
 

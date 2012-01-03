@@ -60,7 +60,8 @@ DECLARE_MODULE_AV1(kick, NULL, NULL, kick_clist, NULL, NULL, "$Revision: 23833 $
 static int
 m_kick(struct Client *client_p, struct Client *source_p, int parc, const char *parv[])
 {
-	struct membership *msptr;
+	struct membership *msptr = NULL;
+	struct membership *fmsptr = NULL;
 	struct Client *who;
 	struct Channel *chptr;
 	int chasing = 0;
@@ -89,16 +90,15 @@ m_kick(struct Client *client_p, struct Client *source_p, int parc, const char *p
 
 	if(!IsServer(source_p))
 	{
-		msptr = find_channel_membership(chptr, source_p);
 
-		if((msptr == NULL) && MyConnect(source_p))
+		if (((msptr = find_channel_membership(chptr, source_p))==NULL) && MyConnect(source_p))
 		{
 			sendto_one_numeric(source_p, ERR_NOTONCHANNEL,
 					   form_str(ERR_NOTONCHANNEL), name);
 			return 0;
 		}
 
-		if(!is_chanop(msptr))
+		if(!has_chan_flag(msptr, CHFL_HALFOP))
 		{
 			if(MyConnect(source_p))
 			{
@@ -106,7 +106,6 @@ m_kick(struct Client *client_p, struct Client *source_p, int parc, const char *p
 					   me.name, source_p->name, name);
 				return 0;
 			}
-
 			/* If its a TS 0 channel, do it the old way */
 			if(chptr->channelts == 0)
 			{
@@ -145,13 +144,10 @@ m_kick(struct Client *client_p, struct Client *source_p, int parc, const char *p
 	user = parv[2];		/* strtoken(&p2, parv[2], ","); */
 
 	if(!(who = find_chasing(source_p, user, &chasing)))
-	{
 		return 0;
-	}
 
-	msptr = find_channel_membership(chptr, who);
 
-	if(msptr != NULL)
+	if ((fmsptr = find_channel_membership(chptr, who))  != NULL)
 	{
 #ifdef ENABLE_SERVICES
 		if(MyClient(source_p) && IsService(who))
@@ -163,10 +159,10 @@ m_kick(struct Client *client_p, struct Client *source_p, int parc, const char *p
 		}
 #endif
 
+		
 		comment = LOCAL_COPY((EmptyString(parv[3])) ? who->name : parv[3]);
 		if(strlen(comment) > (size_t) REASONLEN)
 			comment[REASONLEN] = '\0';
-
 		/* jdc
 		 * - In the case of a server kicking a user (i.e. CLEARCHAN),
 		 *   the kick should show up as coming from the server which did
@@ -177,12 +173,27 @@ m_kick(struct Client *client_p, struct Client *source_p, int parc, const char *p
 		if(IsServer(source_p))
 			sendto_channel_local(ALL_MEMBERS, chptr, ":%s KICK %s %s :%s",
 					     source_p->name, name, who->name, comment);
-		else
+		else {
+			/* 
+			 * Twitch
+			 * - Check here to see if we are actually allowed to kick the user
+			 *   just remove the flags we dont want, and match against that
+			 *   if our level is < the level we are trying to kick then we can bail.
+			 */
+			unsigned long level = fmsptr->flags;
+			level &= ~CHFL_DEOPPED  | ~CHFL_BANNED;
+			if (msptr->flags < level) {
+					//we probably should respect TS6 here but fuck it
+					sendto_one_numeric(source_p,  999,
+					   "%s You do not have access to kick this person.", chptr->chname);
+					return 0;
+			}			
+			
 			sendto_channel_local(ALL_MEMBERS, chptr,
 					     ":%s!%s@%s KICK %s %s :%s",
 					     source_p->name, source_p->username,
 					     source_p->host, name, who->name, comment);
-
+		}
 		sendto_server(client_p, chptr, CAP_TS6, NOCAPS,
 			      ":%s KICK %s %s :%s", 
 			      use_id(source_p), chptr->chname, 
@@ -190,7 +201,7 @@ m_kick(struct Client *client_p, struct Client *source_p, int parc, const char *p
 		sendto_server(client_p, chptr, NOCAPS, CAP_TS6,
 			      ":%s KICK %s %s :%s", 
 			      source_p->name, chptr->chname, who->name, comment);
-		remove_user_from_channel(msptr);
+		remove_user_from_channel(fmsptr);
 	}
 	else if (MyClient(source_p))
 		sendto_one_numeric(source_p, ERR_USERNOTINCHANNEL,
