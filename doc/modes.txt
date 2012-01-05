@@ -48,6 +48,24 @@ Channel Modes:
 +v - voice      - Can speak in a moderated channel, and is exempt from flood 
                   restrictions
 
+Extended Channel  Modes:
+	Extended channel modes are only available on servers not specifically
+	disableing them with --disable-chmode-extended. Please note server 
+	with disabled extended modules cannot link with servers with this option
+	enabled, it will break compatibility. 
+	
+
++q - founder 	- Provides founder level access to a client, this can only be
+		  set by a founder or a network service.
++a - admin	- Channel administration priveldges, people with chanadmin will
+		  be protected by /kick's from users with lower access then them.
++o - operator   - Channel operator status 
++h - halfop	- Can set +i/+m/+s change the topic, kick and ban non operator users
++v - voice	- Can speak when channel is moderated.
+
+
+
+
 The third part of the 004 numeric lists channel modes that require arguments.
 Currently these are bkloveIh.
 

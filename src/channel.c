@@ -170,23 +170,20 @@ find_channel_membership(struct Channel *chptr, struct Client *client_p)
 const char *
 find_channel_status(struct membership *msptr, int combine)
 {
-	static char buffer[3];
-	char *p;
-
-	p = buffer;
-
+	//Keep these together so we can have a cleaner way todisable with ifdef
+	//add support 
+	if (is_chanfounder(msptr))
+			return "~";
+	if (is_chanadmin(msptr))
+			return "&";
+	if ((is_chanhalfop(msptr)) && (!is_chanop(msptr)))
+			return "%";		
+	
 	if(is_chanop(msptr))
-	{
-		if(!combine)
 			return "@";
-		*p++ = '@';
-	}
-
 	if(is_voiced(msptr))
-		*p++ = '+';
-
-	*p = '\0';
-	return buffer;
+			return '+';
+	return "\0";
 }
 
 /* add_user_to_channel()
@@ -450,7 +447,8 @@ channel_member_names(struct Channel *chptr, struct Client *client_p, int show_eo
 
 			tlen = ircsprintf(t, "%s%s ", find_channel_status(msptr, stack),
 				   target_p->name);
-
+		//	printf( "%s%s \n", find_channel_status(msptr, stack),
+		//		   target_p->name);
 			cur_len += tlen;
 			t += tlen;
 		}
