@@ -50,7 +50,7 @@
 
 #include "stdinc.h"
 #include "whowas.h"
-#include "channel_mode.h"
+#include "channel.h"
 #include "client.h"
 #include "common.h"
 #include "hash.h"
