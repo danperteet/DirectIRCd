@@ -6,5 +6,4 @@ TODO 1/3/2012v1 DirectIRCd Development Team
 3. make new configs (assigned to Dan)
 4. port in charybdis's SASL code
 5. check to make sure ipv6 support actually works
-6. port in plexus hostmasking, and possibly improve hashing (we'll probably use this as-is)
-7. work on something similar to charybdis's privsets, or Inspircd's operclass function
+6. work on something similar to charybdis's privsets, or Inspircd's operclass function
