@@ -104,8 +104,7 @@ TSRCS =                          \
   m_whois.c \
   m_whowas.c \
   m_unreject.c \
-  m_xline.c \
-  ip_cloaking.c
+  m_xline.c
 
 SRCS = ${TSRCS} @M_SERVICES@
 
