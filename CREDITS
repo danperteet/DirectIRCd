@@ -1,5 +1,16 @@
-$Id: CREDITS 21337 2005-12-03 12:26:39Z leeh $
- 
+
+--DirectIRCd Credits--
+
+Dan/danp, Daniel Perteet - original idea, small tasks
+Twitch - Lead Coder, makes stuff work
+alyx - ideas and other contributions
+Simplicity, Justin Merwin - ideas and other contributions
+mainstreet - ideas and other contributions
+MoSh - Testing and Quality Assurance
+KindOne - resident idler
+
+--IRCd Ratbox Credits-- 
+
 ircd-ratbox is an evolution where ircd-hybrid left off around version 7-rc1.  
 Currently the ircd-ratbox team consists of the following developers:
  
