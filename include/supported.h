@@ -35,11 +35,11 @@
 		"%s%s"			\
 		" CHANMODES=%s%sb,k,l,imnpst"	\
 		" CHANLIMIT=&#:%i"	\
-		" PREFIX=(qaohv)~&@%+"	\
+		" PREFIX=(qaohv)~&@%%+"	\
 		" MAXLIST=b%s%s:%i"	\
 		" NETWORK=%s"		\
 		" MODES=%i"		\
-		" STATUSMSG=~&@%+"		\
+		" STATUSMSG=~&@%%+"		\
 		"%s"			\
 		" CALLERID=g"
 
