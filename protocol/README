@@ -1,0 +1,8 @@
+Copyright 2012, DirectIRCd Development Team 
+
+Contained in this folder are protocol modules for various services packages. 
+All you must do to use these, is drop them into your services protocol 
+modules folder, and add them to the makefile before compiling services. 
+You can then load them like any other protocol module in your services 
+config file. Thanks for using 
+DirectIRCd, Your IRCd!
