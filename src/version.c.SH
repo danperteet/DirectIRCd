@@ -60,17 +60,7 @@ const char *serno = SERIALNUM;
 
 const char *infotext[] =
 {
-  "$package --",
-  "Based on the original code written by Jarkko Oikarinen",
-  "Copyright 1988, 1989, 1990, 1991 University of Oulu, Computing Center",
-  "Copyright (c) 1996-2001 Hybrid Development Team", 
-  "Copyright (c) 2002-2008 ircd-ratbox Development Team",
-  "",
-  "This program is free software; you can redistribute it and/or",
-  "modify it under the terms of the GNU General Public License as",
-  "published by the Free Software Foundation; either version 1, or",
-  "(at your option) any later version.",
-  "",
+  "$package --", 
 !SUB!THIS!
 
 IFS='
