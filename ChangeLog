@@ -1,4 +1,20 @@
 androsyn    2010/01/25 16:41:18 UTC	(20100125_1-26748)
+
+  Log: Update change log
+	tag directircd 0.0.1
+	Modified:
+
+  Log: Add more channel mode prefixes and support for ~%& modes
+  tag directircd 0.0.1
+	Modified:
+		DirectIRCd/modules/core/m_mode.c
+		DirectIRCd/include/channel.h
+		DirectIRCd/include/supported.h
+
+  Log: Fork
+  tag directircd 0.0.1 
+	Branch from ircd-ratbox. HERE WE GO!
+
   Log:
   tag ratbox 2.2.9
 
