@@ -67,6 +67,8 @@ struct ServerStatistics
 	unsigned int is_kill;	/* number of kills generated on collisions */
 	unsigned int is_asuc;	/* successful auth requests */
 	unsigned int is_abad;	/* bad auth requests */
+	unsigned int is_ssuc;	/* successful sasl authentications */
+	unsigned int is_sbad;	/* failed sasl authentications */
 	unsigned int is_rej;	/* rejected from cache */
 };
 

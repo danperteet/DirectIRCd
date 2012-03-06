@@ -336,6 +336,11 @@ extern const char *form_str(int);
 #define RPL_RSACHALLENGE2       740
 #define RPL_ENDOFRSACHALLENGE2  741
 
+#define RPL_SASLSUCCESS		903
+#define ERR_SASLFAIL		904
+#define ERR_SASLTOOLONG 905
+#define ERR_SASLABORTED 906
+#define ERR_SASLALREADY 907
 
 #define ERR_LAST_ERR_MSG     999
 

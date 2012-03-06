@@ -56,4 +56,12 @@ typedef struct
 	struct Channel *chptr;
 } hook_data_channel;
 
+typedef struct
+{
+	struct Client *local_link; /* local client originating this, or NULL */
+	struct Client *target; /* dying client */
+	struct Client *from; /* causing client (could be &me or target) */
+	const char *comment;
+} hook_data_client_exit;
+
 #endif

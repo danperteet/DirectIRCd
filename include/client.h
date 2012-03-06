@@ -54,6 +54,7 @@ struct DNSReply;
 struct Listener;
 struct Client;
 struct LocalUser;
+struct PreClient;
 
 /*
  * Client structures
@@ -160,7 +161,9 @@ struct Client
 	 */
 	dlink_list on_allow_list;
 
-
+	struct PreClient *preClient;
+	time_t large_ctcp_sent; /* ctcp to large group sent, relax flood checks */
+	char *certfp; /* client certificate fingerprint */
 	struct LocalUser *localClient;
 };
 
@@ -262,6 +265,22 @@ struct LocalUser
 	void *targets[10];		/* targets were aware of */
 	uint8_t targinfo[2];		/* position in cyclic array, no in use */
 	time_t target_last;		/* last time we cleared a slot */
+};
+
+struct PreClient
+{
+	char spoofnick[NICKLEN + 1];
+	char spoofuser[USERLEN + 1];
+	char spoofhost[HOSTLEN + 1];
+
+	char sasl_agent[IDLEN];
+	unsigned char sasl_out;
+	unsigned char sasl_complete;
+
+	dlink_list dnsbl_queries; /* list of struct BlacklistClient * */
+	struct Blacklist *dnsbl_listed; /* first dnsbl where it's listed */
+
+	struct irc_sockaddr_storage lip; /* address of our side of the connection */
 };
 
 struct exit_client_hook
@@ -424,6 +443,7 @@ struct exit_client_hook
 		      UMODE_DEAF)
 
 #define CLICAP_MULTI_PREFIX	0x0001
+#define CLICAP_SASL		0x0002
 
 /*
  * flags macros.
